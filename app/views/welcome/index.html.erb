@@ -1,3 +1,63 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
-<p>Ziwen was here</p>
+<!DOCtype html>
+<html>
+<head>
+<title>Local Host | Fit right in, right away</title>
+</head>
+
+  <style type="text/css">
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Calibri, sans-serif;
+    }
+
+    .background-wrap {
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: 700px;
+      overflow: hidden;
+      top: 0;
+      left: 0;
+    }
+
+    .content {
+      position: absolute;
+      top: 350px;
+      left: 550px;
+      font-size: 30px;
+      text-align: center;
+      color:gray;
+    }
+
+    .video-bg-elem {
+      height: 1200px;
+      width: 100%;
+      opacity: 0.8;
+      z-index: -1;
+    }
+
+    .how-does-it-work {
+    	text-align: center;
+    	top: 200px;
+    }
+
+  </style>
+
+<body>
+
+  <div class="background-wrap">
+ 	<%= video_tag(["local_host.mp4"], class: "video-bg-elem", autoplay: true, loop: true, muted: true)%>
+    <div class="content">
+      <h1>Welcome to Local Host!</h1>
+      <p>Fit right in, right away</p>
+    </div>
+  </div><hr>
+
+</body>
+
+</html>
