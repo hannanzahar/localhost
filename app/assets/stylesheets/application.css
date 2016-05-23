@@ -37,7 +37,7 @@
 
 		.content {
 			position: absolute;
-			top: 50%;
+			top: 60%;
 			left: 25%;
 			font-size: 30px;
 			text-align: center;
@@ -78,7 +78,7 @@
 			min-height: 1px;
 			padding-right: 15px;
 			padding-left: 15px;
-			text-align: center
+			text-align: center;
 		}
 
 		h4.landing-text {
