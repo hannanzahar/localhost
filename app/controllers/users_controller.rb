@@ -26,7 +26,4 @@ class UsersController < ApplicationController
       end
   end
 
-  def delete
-    @user = User.find
-  end
 end
