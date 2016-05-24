@@ -13,9 +13,9 @@ Rails.application.routes.draw do
 #OMNIAUTH
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
-  authenticated do
-   root 'welcome#dashboard', as: :authenticated_root
-  end
+  # authenticated do
+  #  root 'welcome#dashboard', as: :authenticated_root
+  # end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
