@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   # devise_for :models
-  root 'welcome#index'
+  root 'users#edit'
   # get 'users/index'
   # get 'users/new'
   # get 'users/create'
