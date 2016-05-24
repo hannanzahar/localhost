@@ -26,6 +26,8 @@ Rails.application.routes.draw do
 #OMNIAUTH
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
+
+  get "welcome/index"
   # authenticated do
   #  root 'welcome#dashboard', as: :authenticated_root
   # end

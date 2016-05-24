@@ -14,7 +14,7 @@
  *= require_self
  */
 
-		* {
+/*		* {
 			margin: 0;
 			padding: 0;
 		}
@@ -25,7 +25,7 @@
 		}
 
 /* VIDEO */
-		.video-wrap {
+/*		.video-wrap {
 			position: absolute;
 			z-index: -1;
 			width: 100%;
@@ -49,10 +49,10 @@
 			width: 100%;
 			opacity: 0.8;
 			z-index: -1;
-		}
+		}*/
 
 /* LANDING PAGE INFO */
-
+/*
 		h1.how-does-it-work {
 			text-align: center;
 			top: 200px;
@@ -104,10 +104,10 @@
 		.row.text-center {
 			display: inline-flex;
 			background-color: #91d4b3;
-		}
+		}*/
 
 /*LANDING PAGE EXAMPLES */
-		section.example {
+/*		section.example {
 			padding-top: 80px;
 			background-image: url('map.jpg');
 			opacity: 0.2;
@@ -120,4 +120,4 @@
 			color: #fff;
 			font-size: 40px;
 			padding-bottom: 30px;
-		}
+		}*/
