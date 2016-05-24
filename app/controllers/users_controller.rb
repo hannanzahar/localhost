@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   def index
     @user = User.all 
+    @users = User.where.not("id = ?",current_user.id).order("created_at DESC")
+    @conversations = Conversation.involving(current_user).order("created_at DESC")
+
   end
 
   # def new
