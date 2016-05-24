@@ -10,7 +10,7 @@
 <body>
 
   <div class="video-wrap">
- 		<%= video_tag(["local_host"], class: "video-bg-elem", autoplay: true, loop: true, muted: true)%>
+ 		<%= video_tag(["local_host.mp4"], class: "video-bg-elem", autoplay: true, loop: true, muted: true)%>
     <div class="content">
       <h1>Welcome to Local Host!</h1>
       <p>Fit right in, right away</p>
@@ -21,6 +21,8 @@
 
   <%= render partial: '/welcome/landing_page' %>
 
+
+  <%= render partial: '/welcome/examples' %>
 </body>
 
 </html>
