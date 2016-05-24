@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 
 
-# User can sign in
-
+# for uploading profile picture
+gem 'carrierwave'
+gem 'mini_magick'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
