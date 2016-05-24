@@ -6,5 +6,8 @@ class User < ActiveRecord::Base
 
 	# uncomment this when the form is ready for uploading image
 	mount_uploader :avatar, AvatarUploader
-	
+	geocoded_by :address
+  	after_validation :geocode 
+
+
 end
