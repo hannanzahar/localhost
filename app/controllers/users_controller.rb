@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
   
-
-
   def index
     if params[:search].present?
       @users = User.near(params[:search], 100).where.not("id = ?",current_user.id).order("created_at DESC")
@@ -9,33 +7,27 @@ class UsersController < ApplicationController
       @user = User.all
       @users = User.where.not("id = ?",current_user.id).order("created_at DESC")
     end
-   @conversations = Conversation.involving(current_user).order("created_at DESC")
-    
-
-
+   @conversations = Conversation.involving(current_user).order("created_at DESC")   
   end
 
   def edit
     @user = current_user
+    @user.geocode
   end
-
-  
 
   def show
     @user = current_user
   end
 
   def address
-      current_user.location
-      
+    current_user.location 
   end
 
   def update
     @user = current_user
-
     @user.geocode
     if @user.update_attributes(user_from_params)
-      @user.location 
+      @user.address 
       redirect_to @user
     else
       render 'edit'
@@ -43,7 +35,6 @@ class UsersController < ApplicationController
   end
 
   def delete
-
   end
 
   def show_nearby_locations
