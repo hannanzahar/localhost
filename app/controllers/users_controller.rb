@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     else
       @user = User.all
       @users = User.where.not("id = ?",current_user.id).order("created_at DESC")
+      @locations = location_array(@users)
     end
    @conversations = Conversation.involving(current_user).order("created_at DESC")
     
@@ -19,7 +20,14 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
-  
+  def location_array(users)
+    locations =[]
+    users.each do |user| 
+      loc_hash = {"lat" => user.latitude, "lng" =>user.longitude, "infowindow" => user.first_name}
+      locations << loc_hash
+    end
+    locations
+  end
 
   def show
     @user = current_user
@@ -32,7 +40,7 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    byebug
+    # byebug
     @user.geocode
     if @user.update_attributes(user_from_params)
       redirect_to @user

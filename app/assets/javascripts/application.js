@@ -15,15 +15,12 @@
 
 //= require private_pub
 //= require chat
+//= require user
 //= require turbolinks
-//= require_tree .
+//= require underscore
+//= require gmaps/google
 
-$(document).ready(function () {
-    //Initialize tooltips
-    $('.nav-tabs > li a[title]').tooltip();
-    
-    //Wizard
-    $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+//= require_tree .
 
         var $target = $(e.target);
     
