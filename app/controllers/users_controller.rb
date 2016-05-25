@@ -32,10 +32,9 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-
+    byebug
     @user.geocode
     if @user.update_attributes(user_from_params)
-      @user.location 
       redirect_to @user
     else
       render 'edit'
