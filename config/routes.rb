@@ -22,10 +22,12 @@ Rails.application.routes.draw do
   # get 'users/create'
   # get 'users/update'
   # get 'users/delete'
-  resources :users, only: [:show, :edit, :update, :destroy]
+  resources :users, only: [:show, :edit, :update, :destroy, :index]
 #OMNIAUTH
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
+
+  get "welcome/index"
   # authenticated do
   #  root 'welcome#dashboard', as: :authenticated_root
   # end

@@ -1,26 +1,358 @@
-<!DOCtype html>
-<html>
-<head>
-	<title>Local Host | Fit right in, right away</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-</head>
+  <body id="home">
 
-<body>
-
-  <div class="video-wrap">
- 		<%= video_tag(["local_host"], class: "video-bg-elem", autoplay: true, loop: true, muted: true)%>
-    <div class="content">
-      <h1>Welcome to Local Host!</h1>
-      <p>Fit right in, right away</p>
+    <!-- Preloader -->
+    <div id="preloader">
+      <div id="status"></div>
     </div>
-  </div><hr>
 
-  <h1 class="how-does-it-work">How does it work?</h1>
+    <!-- FullScreen -->
 
-  <%= render partial: '/welcome/landing_page' %>
+    <div class="intro-header" style="background-color: gray; padding-bottom: 300px;">
+    <%= video_tag(["local_host.mp4"], class: "video-bg-elem", autoplay: true, loop: true, muted: true)%>
+      <div class="col-xs-12 text-center abcen1">
+        <h1 class="h1_home wow fadeIn" data-wow-delay="0.4s">Welcome to Local Host!</h1>
+        <h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">Fit right in, right away</h3>
+        <ul class="list-inline intro-social-buttons">
+          <li><a href="https://twitter.com/galantiandrea" class="btn  btn-lg mybutton_cyano wow fadeIn" data-wow-delay="0.8s"><span class="network-name">Sign In</span></a>
+          </li>
+          <li id="download" ><a href="#downloadlink" class="btn  btn-lg mybutton_standard wow swing wow fadeIn" data-wow-delay="1.2s"><span class="network-name">Find a Friend</span></a>
+          </li>
+        </ul>
+      </div>    
+      <!-- /.container -->
+      <div class="col-xs-12 text-center abcen wow fadeIn">
+        <div class="button_down "> 
+          <a class="imgcircle wow bounceInUp" data-wow-duration="1.5s"  href="#whatis"> <img class="img_scroll"</a>
 
+
+        </div>
+      </div>
+    </div>
+
+    <!-- NavBar-->
+    <nav class="navbar-default stuckMenu isStuck" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#home">Local Host</a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
+          <ul class="nav navbar-nav">
+
+            <li class="menuItem"><a href="#whatis">How Does It Work?</a></li>
+            <li class="menuItem"><a href="#useit">Use It</a></li>
+            <li class="menuItem"><a href="#screen">Screenshot</a></li>
+            <li class="menuItem"><a href="#credits">Credits</a></li>
+            <li class="menuItem"><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </nav> 
+
+    <!-- What is -->
+    <div id="whatis" class="content-section-b" style="border-top: 0">
+      <div class="container">
+
+        <div class="col-md-6 col-md-offset-3 text-center wrap_title">
+          <h2>How does it work?</h2>
+          <p class="lead" style="margin-top:0">Do as the locals do</p>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-sm-4 wow fadeInDown text-center">
+
+            <%= image_tag("googlemap.png" , class: "rotate") %>
+            <h3>Find a Friend</h3>
+            <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
+
+            <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
+          </div><!-- /.col-lg-4 -->
+
+          <div class="col-sm-4 wow fadeInDown text-center">
+            <%= image_tag("meetup.png" , class: "rotate") %>
+            <h3>Meet Up</h3>
+            <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
+            <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
+          </div><!-- /.col-lg-4 -->
+
+          <div class="col-sm-4 wow fadeInDown text-center">
+            <%= image_tag("check.png" , class: "rotate") %>
+            <h3>Verification</h3>
+            <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
+            <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
+          </div><!-- /.col-lg-4 -->
+
+        </div><!-- /.row -->
+        
+      </div>
+    </div>
+
+<!-- Use it -->
+    <div id ="useit" class="content-section-a">
+
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-sm-6 pull-right wow fadeInRightBig">
+            <%= image_tag("ipad.png" , class: "img-responsive") %>
+          </div>
+
+          <div class="col-sm-6 wow fadeInLeftBig"  data-animation-delay="200">   
+            <h3 class="section-heading">Find a Friend Remotely</h3>
+            <div class="sub-title lead3">Arrive at your new destination and enter in your location</div>
+            <p class="lead">
+              Find a New Friend within your vicinity based on similar interests or travel experience.
+            </p>
+
+            <p><a class="btn btn-embossed btn-primary" href="#" role="button">View Details</a> 
+             <a class="btn btn-embossed btn-info" href="#" role="button">Visit Website</a></p>
+           </div>   
+         </div>
+       </div>
+       <!-- /.container -->
+     </div>
+
+     <div class="content-section-b"> 
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 wow fadeInLeftBig">
+           <div id="owl-demo-1" class="owl-carousel">
+            <a href="" class="image-link">
+              <div class="item">
+                <%= image_tag("messaging.jpg" , class: "img-responsive img-rounded") %>
+              </div>
+            </a>
+          </div>       
+        </div>
+        
+        <div class="col-sm-6 wow fadeInRightBig"  data-animation-delay="200">   
+          <h3 class="section-heading">Make That Connection</h3>
+          <div class="sub-title lead3">Reach out to your new friend with our messaging application</div>
+          <p class="lead">
+            Each User's details are verified on our site during the registration process.
+          </p>
+
+          <p><a class="btn btn-embossed btn-primary" href="#" role="button">View Details</a> 
+           <a class="btn btn-embossed btn-info" href="#" role="button">Visit Website</a></p>
+         </div>        
+       </div>
+     </div>
+   </div>
+
+   <div class="content-section-a">
+
+    <div class="container">
+
+     <div class="row">
+
+      <div class="col-sm-6 pull-right wow fadeInRightBig">
+        <%= image_tag("globe.png" , class: "img-responsive img-rounded") %>
+      </div>
+
+      <div class="col-sm-6 wow fadeInLeftBig"  data-animation-delay="200">   
+        <h3 class="section-heading">Friends All Around The Globe</h3>
+        <p class="lead">Make life-long, lasting connections and bridge all cultural gaps.
+        </p>
+
+<!--         <ul class="descp lead2">
+          <li><i class="glyphicon glyphicon-signal"></i> Reliable and Secure Platform</li>
+          <li><i class="glyphicon glyphicon-refresh"></i> Everything is perfectly orgainized for future</li>
+          <li><i class="glyphicon glyphicon-headphones"></i> Attach large file easily</li> -->
+        </ul>
+      </div>           
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+<!-- User Reviews -->
+<center>
+<div id="credits" class="content-section-a">
+  <div class="container" style="background-color: #fff; padding-left: 15%; padding-right:15%">
+    <div class="row">
+
+      <div class="col-md-6 col-md-offset-3 text-center wrap_title">
+        <h2>User Reviews</h2>
+        <p class="lead" style="margin-top:0">See what our users are saying!</p>
+      </div>
+
+      <div class="col-sm-6  block wow bounceIn">
+        <div class="row">
+          <div class="col-md-4 box-icon rotate" style="margin-left: 15%"> 
+            <i class="fa fa-desktop fa-4x "> </i> 
+          </div>
+          <div class="col-md-8 box-ct">
+            <h3> Jian Hew </h3>
+            <p> "It's great! I made so many new discoveries!" </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 block wow bounceIn">
+        <div class="row">
+          <div class="col-md-4 box-icon rotate" style="margin-left: 15%"> 
+            <i class="fa fa-picture-o fa-4x "> </i> 
+          </div>
+          <div class="col-md-8 box-ct">
+            <h3> Lam Sheng Xiong </h3>
+            <p> "I found so many hidden gems that I wouldn't have otherwise!"</p> 
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row tworow">
+      <div class="col-sm-6  block wow bounceIn">
+        <div class="row">
+          <div class="col-md-4 box-icon rotate" style="margin-left: 15%"> 
+            <i class="fa fa-magic fa-4x "> </i> 
+          </div>
+          <div class="col-md-8 box-ct">
+            <h3> Sam Tingle </h3>
+            <p> "Quintessential for Travellers!" </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 block wow bounceIn">
+        <div class="row">
+          <div class="col-md-4 box-icon rotate" style="margin-left: 15%"> 
+            <i class="fa fa-heart fa-4x "> </i> 
+          </div>
+          <div class="col-md-8 box-ct">
+            <h3> Hannan Zahar</h3>
+            <p> "A game-changer for travelling!"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row tworow">
+      <div class="col-sm-6  block wow bounceIn">
+        <div class="row">
+          <div class="col-md-4 box-icon rotate" style="margin-left: 15%"> 
+            <i class="fa fa-magic fa-4x "> </i> 
+          </div>
+          <div class="col-md-8 box-ct">
+          <h3> Zi Ho </h3>
+            <p> "Love it, wouldn't travel awithout it!"</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+</center>
+
+<div  class="content-section-c ">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 text-center white">
+        <h2>Sign-up for Free!</h2>
+        <p class="lead" style="margin-top:0"></p>
+      </div>
+      <div class="col-md-6 col-md-offset-3 text-center">
+        <div class="mockup-content">
+          <div class="morph-button wow pulse morph-button-inflow morph-button-inflow-1">
+            <button type="button "><span>Free Download</span></button>
+            <div class="morph-content">
+              <div>
+                <div class="content-style-form content-style-form-4 ">
+                  <h2 class="morph-clone">Free Download</h2>
+                  <form>
+                    <p><label>Your Email Address</label><input type="text"/></p>
+                    <p><button>Subscribe me</button></p>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>>
+  </div>
+</div>  
+  
+  
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7">
+          <h3 class="footer-title">Follow Me!</h3>
+          <p>Vuoi ricevere news su altri template?<br/>
+            Visita Andrea Galanti.it e vedrai tutte le news riguardanti nuovi Theme!<br/>
+            Go to: <a  href="http://andreagalanti.it" target="_blank">andreagalanti.it</a>
+          </p>
+
+          <!-- LICENSE -->
+<!--           <a rel="cc:attributionURL" href="http://www.andreagalanti.it/flatfy"
+          property="dc:title">Flatfy Theme </a> by
+          <a rel="dc:creator" href="http://www.andreagalanti.it"
+          property="cc:attributionName">Andrea Galanti</a>
+          is licensed to the public under 
+          <BR>the <a rel="license"
+           href="http://creativecommons.org/licenses/by-nc/3.0/it/deed.it">Creative
+           Commons Attribution 3.0 License - NOT COMMERCIAL</a>.
+ -->
+
+         </div> <!-- /col-xs-7 -->
+
+         <div class="col-md-5">
+          <div class="footer-banner">
+            <h3 class="footer-title">Flatfy Theme</h3>
+            <ul>
+              <li>12 Column Grid Bootstrap</li>
+              <li>Form Contact</li>
+              <li>Drag Gallery</li>
+              <li>Full Responsive</li>
+              <li>Lorem Ipsum</li>
+            </ul>
+            Go to: <a href="http://andreagalanti.it/flatfy" target="_blank">andreagalanti.it/flatfy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/jquery-1.10.2.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/owl.carousel.js"></script>
+  <script src="js/script.js"></script>
+  <!-- StikyMenu -->
+  <script src="js/stickUp.min.js"></script>
+  <script type="text/javascript">
+    jQuery(function($) {
+      $(document).ready( function() {
+        $('.navbar-default').stickUp();
+
+      });
+    });
+
+  </script>
+  <!-- Smoothscroll -->
+  <script type="text/javascript" src="js/jquery.corner.js"></script> 
+  <script src="js/wow.min.js"></script>
+  <script>
+   new WOW().init();
+ </script>
+ <script src="js/classie.js"></script>
+ <script src="js/uiMorphingButton_inflow.js"></script>
+ <!-- Magnific Popup core JS file -->
+ <script src="js/jquery.magnific-popup.js"></script> 
 </body>
 
 </html>
