@@ -21,12 +21,6 @@ Rails.application.routes.draw do
     resources :messages
   end
 
-  # get 'users/index'
-  # get 'users/new'
-  # get 'users/create'
-  # get 'users/update'
-  # get 'users/delete'
-
   resources :users #, only: [:show, :edit, :update, :destroy]
 
   resources :users, only: [:show, :edit, :update, :destroy, :index]
@@ -34,6 +28,8 @@ Rails.application.routes.draw do
 #OMNIAUTH
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
+
+  get "welcome/index"
   # authenticated do
   #  root 'welcome#dashboard', as: :authenticated_root
   # end
