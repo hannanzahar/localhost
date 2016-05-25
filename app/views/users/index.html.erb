@@ -38,7 +38,7 @@
 <script type="text/javascript">
 handler = Gmaps.build('Google');
   handler.buildMap({ provider: {}, internal: {id: "map"}}, function(){
-  markers = handler.addMarkers([{"lat":40.7127837,"lng":-74.0059413,"infowindow":"ghnhg"},{"lat":3.148147,"lng":101.6158446,"infowindow":"Feeding sam"},{"lat":4.18433,"lng":102.0542321,"infowindow":"JFeed"},{"lat":3.492095,"lng":103.3895446,"infowindow":"Pekan Laksa"},{"lat":3.1577405,"lng":101.712167,"infowindow":"KLCC Feed"}]);
+  markers = handler.addMarkers(<%=raw @hash.to_json %>);
   handler.bounds.extendWith(markers);
   handler.fitMapToBounds();
 });

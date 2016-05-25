@@ -8,7 +8,11 @@ class UsersController < ApplicationController
     else
       @user = User.all
       @users = User.where.not("id = ?",current_user.id).order("created_at DESC")
-      @locations = location_array(@users)
+      @hash = Gmaps4rails.build_markers(@users) do |user, marker|
+        marker.lat user.latitude
+        marker.lng user.longitude
+        marker.infowindow user.first_name
+        end
     end
    @conversations = Conversation.involving(current_user).order("created_at DESC")
     
