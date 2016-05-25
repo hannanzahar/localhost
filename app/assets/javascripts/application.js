@@ -15,6 +15,7 @@
 
 //= require private_pub
 //= require chat
+//= require user
 //= require turbolinks
 //= require underscore
 //= require gmaps/google
