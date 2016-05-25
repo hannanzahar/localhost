@@ -1,3 +1,21 @@
 <h2><%=@user.first_name %> 
 <%= @user.last_name %></h2>
 <p><strong>Email: </strong> <%=@user.email %> </p>
+<p> <%=@user.address%> <%= @user.latitude %>
+	<%= @user.longitude %></p>
+
+
+<% if @user.nearbys(100) %>
+	<% @user.nearbys(100).all.each do |location| %>
+	  <li><%= link_to location.address, location %> (<%= location.distance.round(2) %> miles)</li>
+	<% end %>
+<% end %>
+
+
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@user.latitude}%2C#{@user.longitude}" %>
+
+<%= link_to "edit profile", edit_user_path %>
+
+<%= link_to "All users", users_path %>
+
+

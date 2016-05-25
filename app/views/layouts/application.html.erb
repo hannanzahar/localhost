@@ -2,7 +2,14 @@
 <html>
 <head>
   <title>LocalHost</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta content='<%= user_signed_in? ? current_user.id : "" %>' name='user-id'/>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
@@ -53,14 +60,40 @@
     </div>
   </div>
 
-    <div id="flash">
-      <% flash.each do |key, value| %>
-        <div class="flash <%= key %>"><%= value %></div>
-      <% end %>
-    </div>
+	<% if signed_in? %>
+  Signed in as: <%= current_user.email %>
+  <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+  <% else %>
+  <%= link_to 'Sign in', new_user_session_path %>
+  <% end %>
+
+  <div id="flash">
+    <% flash.each do |key, value| %>
+    <div class="flash <%= key %>"><%= value %></div>
+    <% end %>
+  </div>
+
+<div class="container">
+  <% if alert %>
+      <div class="alert alert-danger" role="alert"><%= alert %></div>
+  <% end %>
+  <% if notice %>
+      <div class="alert alert-success" role="alert"><%= notice %></div>
+  <% end %>
+  
+<%= form_tag users_path, :method => :get do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search Near", :name => nil %>
+<% end %>
+
+  <%= yield %>
+</div>
 
 
-<%= yield %>
+<audio id="chatAudio"><source src="/sounds/notification.mp3" type="audio/mpeg"></audio>
+
+
 
 </body>
 </html>

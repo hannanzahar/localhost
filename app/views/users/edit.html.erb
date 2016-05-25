@@ -52,6 +52,7 @@
 										<b>First Name: </b>
 										<%= form.text_field :first_name, class:"form-control", placeholder:"Enter your first name" %></br>
 
+
 										<label class="sr-only">Last Name</label>
 										<b>Last Name: </b> 
 										<%= form.text_field :last_name ,class:"form-control", placeholder:"Enter your last name" %></br>
@@ -80,6 +81,17 @@
 											<li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
 										</ul>
 									</div>
+									
+									<div class="form-group">
+									<b>Address </b> 
+									<label class="sr-only"> Address </label>
+									<%= form.text_field :address, class:"form-control", id:"exampleInputPassword2", placeholder:"your location"%>
+									</div>
+
+									<div class="submit-field">
+									<%= form.submit "Update Profile" %>
+									</div>
+
 
 									<div class="tab-pane" role="tabpanel" id="step2">
 										<h3>Emergency Contact Information</h3>

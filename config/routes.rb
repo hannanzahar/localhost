@@ -1,15 +1,36 @@
 Rails.application.routes.draw do
 
 
+
   devise_for :users
   # devise_for :models
+
   root 'welcome#index'
+
+  # authenticated :user do
+  #   root 'users#index'
+  # end
+
+  unauthenticated :user do
+    devise_scope :user do
+      get "/" => "devise/sessions#new"
+    end
+  end
+
+  resources :conversations do
+    resources :messages
+  end
+
   # get 'users/index'
   # get 'users/new'
   # get 'users/create'
   # get 'users/update'
   # get 'users/delete'
+
   resources :users #, only: [:show, :edit, :update, :destroy]
+
+  resources :users, only: [:show, :edit, :update, :destroy, :index]
+
 #OMNIAUTH
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
