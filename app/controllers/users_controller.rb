@@ -34,7 +34,6 @@ class UsersController < ApplicationController
   end
 
   def address
-      byebug
       current_user.location
       
   end
