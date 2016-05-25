@@ -58,15 +58,15 @@
 
 										<label class="sr-only">Biography</label>
 										<b>Biography: </b> 
-										<%= form.text_field :bio ,class:"form-control", placeholder:"Enter your biography" %></br>
+										<%= form.text_area :bio ,class:"form-control", placeholder:"Tell us more about yourself" %></br>
 
 										<label class="sr-only">Interests</label>
 										<b>Interests: </b> 
-										<%= form.text_field :interests ,class:"form-control", placeholder:"What's your interest?" %></br>
+										<%= form.text_area :interests ,class:"form-control", placeholder:"What's your interest?" %></br>
 
 										<label class="sr-only">Birthdate</label>
 										<b>Birthdate: </b> 
-										<%= form.text_field :birthdate ,class:"form-control", placeholder:"Birthday" %></br>
+										<%= form.date_field :birthdate ,class:"form-control", placeholder:"Birthday" %></br>
 
 										<label class="sr-only">Location</label>
 										<b>Location: </b> 
@@ -93,7 +93,7 @@
 
 										<label class="sr-only">Address</label>
 										<b>Address: </b> 
-										<%= form.text_field :last_name ,class:"form-control", placeholder:"Address" %></br>
+										<%= form.text_area :last_name ,class:"form-control", placeholder:"Address" %></br>
 
 										<label class="sr-only">Phone Number</label>
 										<b>Phone Number: </b> 

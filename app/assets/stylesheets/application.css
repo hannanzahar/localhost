@@ -272,3 +272,8 @@ span.round-tab:hover {
 	display: inline-block;
 	margin: 0 auto;
 }
+
+textarea.form-control {
+    height: 150px !important;
+}
+
