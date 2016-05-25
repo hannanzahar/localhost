@@ -12,13 +12,11 @@
 }
 
 .chatboxhead {
-    background: #666;
+    background: #607D8B;
     color: white;
     padding: 0.5rem;
     overflow: hidden;
-
-    border-right: 1px solid rgba(85, 85, 85, 0.87);
-    border-left: 1px solid rgba(85, 85, 85, 0.87);
+    width: 280px;
 }
 
 .chatboxhead h1 {
@@ -41,8 +39,8 @@
     padding: 7px;
     border-left: 1px solid #cccccc;
     border-right: 1px solid #cccccc;
-    border-bottom: 1px solid #eeeeee;
-    background: #e5e5e5;
+
+    background: #78909C;
     line-height: 1.3em;
     list-style: none;
 }
@@ -128,17 +126,18 @@
 }
 
 .chatboxinput {
+    width: 285px;
     padding: 5px;
-    background-color: #ffffff;
+    background-color: #607D8B;
     border-left: 1px solid #cccccc;
     border-right: 1px solid #cccccc;
-    border-bottom: 1px solid #cccccc;
+
 }
 
 .chatboxtextarea {
-    width: 262px;
+    width: 280px;
     height: 44px;
-    padding: 3px 0pt 3px 3px;
+    /*padding: 3px 0pt 3px 3px;*/
     border: 1px solid #eeeeee;
     margin: 1px;
     overflow: hidden;
@@ -172,4 +171,25 @@
 
 .chatboxtitle {
     float: left;
+}
+
+
+
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+    width: 12px;
+    display: none;
+    /*hide the scrollbar*/
+}
+
+::-webkit-scrollbar-thumb
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #428BCA;
 }
