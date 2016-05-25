@@ -4,30 +4,22 @@ class UsersController < ApplicationController
 
   def index
     if params[:search].present?
-      @user = User.near(params[:search], 100)
+      @users = User.near(params[:search], 100).where.not("id = ?",current_user.id).order("created_at DESC")
     else
       @user = User.all
+      @users = User.where.not("id = ?",current_user.id).order("created_at DESC")
     end
-  end
+   @conversations = Conversation.involving(current_user).order("created_at DESC")
+    
 
-  # def new
-  #   @user = user_from_params
-  #  render template: "users/new"
-  # end
+
+  end
 
   def edit
     @user = current_user
   end
 
-  # def create
-  #   @user = user_from_params
-
-  #  if @user.save
-  #    #redirect_back_or url_after_create
-  #  else
-  #    render template: "users/new"
-  #  end
-  # end
+  
 
   def show
     @user = current_user

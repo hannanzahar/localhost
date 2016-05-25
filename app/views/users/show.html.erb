@@ -4,8 +4,11 @@
 <p> <%=@user.address%> <%= @user.latitude %>
 	<%= @user.longitude %></p>
 
-<% @user.nearbys(100).all.each do |location| %>
-  <li><%= link_to location.address, location %> (<%= location.distance.round(2) %> miles)</li>
+
+<% if @user.nearbys(100) %>
+	<% @user.nearbys(100).all.each do |location| %>
+	  <li><%= link_to location.address, location %> (<%= location.distance.round(2) %> miles)</li>
+	<% end %>
 <% end %>
 
 
