@@ -16,17 +16,17 @@
 <body>
 
 	<% if signed_in? %>
-      Signed in as: <%= current_user.email %>
-      <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Sign in', new_user_session_path %>
-    <% end %>
+  Signed in as: <%= current_user.email %>
+  <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+  <% else %>
+  <%= link_to 'Sign in', new_user_session_path %>
+  <% end %>
 
-    <div id="flash">
-      <% flash.each do |key, value| %>
-        <div class="flash <%= key %>"><%= value %></div>
-      <% end %>
-    </div>
+  <div id="flash">
+    <% flash.each do |key, value| %>
+    <div class="flash <%= key %>"><%= value %></div>
+    <% end %>
+  </div>
 
 <div class="container">
   <% if alert %>
@@ -35,7 +35,12 @@
   <% if notice %>
       <div class="alert alert-success" role="alert"><%= notice %></div>
   <% end %>
-
+  
+<%= form_tag users_path, :method => :get do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search Near", :name => nil %>
+<% end %>
 
   <%= yield %>
 </div>
