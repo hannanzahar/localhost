@@ -5,6 +5,6 @@ class User < ActiveRecord::Base
 	     :recoverable, :rememberable, :trackable, :validatable
 
 	# uncomment this when the form is ready for uploading image
-	# mount_uploader :avatar, AvatarUploader
+	mount_uploader :avatar, AvatarUploader
 	
 end

@@ -3,13 +3,13 @@ Rails.application.routes.draw do
 
   devise_for :users
   # devise_for :models
-  root 'users#edit'
+  root 'welcome#index'
   # get 'users/index'
   # get 'users/new'
   # get 'users/create'
   # get 'users/update'
   # get 'users/delete'
-  resources :users, only: [:show, :edit, :update, :destroy]
+  resources :users #, only: [:show, :edit, :update, :destroy]
 #OMNIAUTH
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
