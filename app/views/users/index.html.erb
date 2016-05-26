@@ -27,18 +27,21 @@
     <%= link_to "edit", edit_user_path(current_user.id) %>
   </div>
 
+<hr class="style1">
+
+
   <div style='width: 100%; margin-top: -1.55%;'>
     <div id="map" style='width: 100%; height: 400px;'></div>
   </div>
 
+<script type="text/javascript">
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: "map"}}, function(){
+  markers = handler.addMarkers(<%=raw @hash.to_json %>);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+});
 
-  <script type="text/javascript">
-    handler = Gmaps.build('Google');
-    handler.buildMap({ provider: {}, internal: {id: "map"}}, function(){
-      markers = handler.addMarkers([{"lat":40.7127837,"lng":-74.0059413,"infowindow":"ghnhg"},{"lat":3.148147,"lng":101.6158446,"infowindow":"Feeding sam"},{"lat":4.18433,"lng":102.0542321,"infowindow":"JFeed"},{"lat":3.492095,"lng":103.3895446,"infowindow":"Pekan Laksa"},{"lat":3.1577405,"lng":101.712167,"infowindow":"KLCC Feed"}]);
-      handler.bounds.extendWith(markers);
-      handler.fitMapToBounds();
-    });
 
   </script>
 
@@ -64,6 +67,15 @@
             <tbody>
               <% @users.each_with_index do |user, index| %>
 
+<hr class="style1">
+<div class="row">
+  <!-- Not implemented on tutorial -->
+  <div class="col-md-4">
+    <div style="height: 300px; overflow-y: auto;">
+      <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Registered Users</div>
+
               <tr>
                 <td><%= index +=1 %></td>
                 <td><%= user.first_name%></td>
@@ -81,20 +93,27 @@
       </div>
       <hr>
 
+    </div>
+    <hr class="style1">
+    <h3>Your Conversations</h3>
+
+
       <div class="your-convos" style="padding: 30px">
         <h3>Your Conversations</h3>
         <div style="height: 400px; overflow-y: auto;">
           <% if @conversations.any? %>
           <ul class="media-list">
             <% @conversations.each do |conversation| %>
-            <li class="media">
-              <%= image_tag("http://placehold.it/50x50", class: "media-object pull-left") %>
-              <div class="media-body">
-                <%= link_to "", conversation_path(conversation), class: "conversation", "data-cid" => conversation.id %>
 
-                <p><%= conversation.messages.last.nil? ? "No messages" : truncate(conversation.messages.last.body, length: 45) %></p>
-              </div>
-            </li>
+                <li class="media">
+                <!-- profile pic-->
+                  <%= image_tag(conversation_interlocutor(conversation).avatar.url , class: "media-object pull-left", height:"70", width:"70" )  %>
+                  <div class="media-body">
+                    <%= link_to "", conversation_path(conversation), class: "conversation", "data-cid" => conversation.id %>
+                        <h4 class="media-heading"><%= conversation_interlocutor(conversation).first_name %></h4>
+                        <p><%= conversation.messages.last.nil? ? "No messages" : truncate(conversation.messages.last.body, length: 45) %></p>
+                  </div>
+                </li>
 
             <% end %>
           </ul>
