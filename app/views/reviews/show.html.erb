@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @review.comment %>
+</p>
+
+<p>
+  <strong>Reviews<span id="average_rating"></span>(<%= User.average_rating(@review.id) %>)</strong>
+  <%= @review.star %>
+</p>
+
+<p>
+  <strong>Review by User:</strong>
+  <%= @review.user.email %>
+</p>
+
+<%= link_to 'Edit', edit_review_path(@review) %> |
+<%= link_to 'Back', reviews_path %>
+
+<script>
+  $('#average_rating').raty({
+    path: '/assets',
+    scoreName: 'review[star]',
+    score: 1
+  });
+</script>

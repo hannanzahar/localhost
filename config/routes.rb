@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 
 
+  resources :reviews
   devise_for :users
   # devise_for :models
   authenticated :user do

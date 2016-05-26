@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
 	devise :database_authenticatable, :registerable,
 	     :recoverable, :rememberable, :trackable, :validatable
     has_many :conversations, :foreign_key => :sender_id
+    has_many :reviews
+
 	# uncomment this when the form is ready for uploading image
 	mount_uploader :avatar, AvatarUploader
 	geocoded_by :address
@@ -14,4 +16,8 @@ class User < ActiveRecord::Base
  #  	def address
  #  		[street, city, state, country].compact.join(', ')
 	# end
+	def self.average_rating(id)
+		@reviews = Review.where(user_id: id)
+		@reviews.count == 0 ? 0 : @reviews.average(:star).round(2)
+	end
 end
