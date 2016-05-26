@@ -55,61 +55,35 @@
 
   <%= csrf_meta_tags %>
 
-  </head>
-  <body>
+</head>
+<body style="padding-top: 0px">
+ 
+  <%= render partial: "layouts/navbar" %>
 
-  <nav class="navbar-default stuckMenu isStuck" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#home">Local Host</a>
-        </div>
-
-        <div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
-          <ul class="nav navbar-nav">
-
-            <li class="menuItem"><a href="#whatis">How Does It Work?</a></li>
-            <li class="menuItem"><a href="#useit">Use It</a></li>
-            <li class="menuItem"><a href="#screen">Screenshot</a></li>
-            <li class="menuItem"><a href="#credits">Credits</a></li>
-            <li class="menuItem"><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-  </nav> 
-
-    <% if signed_in? %>
-    Signed in as: <%= current_user.email %>
-    <%= link_to current_user.first_name, user_path(current_user.id) %>
-    <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-    <% else %>
-    <%= link_to 'Sign in', new_user_session_path %>
+  <div class="container" style="padding-left: 0px; padding-right: 0px; margin-left: 0px; margin-right: 0px">
+    <% if alert %>
+    <div class="alert alert-danger" role="alert"><%= alert %></div>
     <% end %>
+    <% if notice %>
+    <div class="alert alert-success" style="width: 1291px;" role="alert"><%= notice %></div>
+    <% end %>
+  </div>
 
-    <div id="flash">
-      <% flash.each do |key, value| %>
-      <div class="flash <%= key %>"><%= value %></div>
-      <% end %>
-    </div>
+  <div class="sign-in bar">
+    <% if signed_in? %>
+    <!-- Signed in as: <%= current_user.email %> -->
+   <!--  <%= link_to current_user.first_name, user_path(current_user.id) %> -->
+    <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+    <% else %>
+    <%= link_to 'Sign In', new_user_session_path %>
+    <% end %>
+  </div>
+    
+    <%= yield %>
 
-    <div class="container">
-      <% if alert %>
-      <div class="alert alert-danger" role="alert"><%= alert %></div>
-      <% end %>
-      <% if notice %>
-      <div class="alert alert-success" role="alert"><%= notice %></div>
-      <% end %>
-    </div>
-        <%= yield %>
+    <audio id="chatAudio"><source src="/sounds/notification.mp3" type="audio/mpeg"></audio>
 
-      <audio id="chatAudio"><source src="/sounds/notification.mp3" type="audio/mpeg"></audio>
-
-    </body>
+</body>
 
     <% if current_user %>
     <script type="text/javascript">
@@ -126,5 +100,5 @@
     <%= subscribe_to "/notifications" + current_user.id.to_s %>
     <% end %>
 
-    </html>
+</html>
 

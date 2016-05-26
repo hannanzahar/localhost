@@ -15,7 +15,49 @@
  *= require_self
  *= require_tree .
  
-/* Seach Bar */
+/* ----- Avatar -----*/
+/*.avatar {
+	position: relative;
+	margin-top: 15px;
+	z-index: 100;
+}
+
+.avatar img {
+ 	width: 100px;
+ 	height: 100px;
+ 	-webkit-border-radius: 50%;
+ 	-moz-border-radius: 50%;
+ 	border-radius: 50%;
+ 	border-style: solid;
+ 	border-color: white;
+ 	border-width: 3px;
+}*/
+
+.avatar-xs {
+	margin-left: 7px;
+	width: 10%;
+	height: 10%;
+	-webkit-border-radius: 50%;
+ 	-moz-border-radius: 50%;
+ 	border-radius: 50%;
+}
+
+
+/* Titles */
+h1#title {
+	font-family: 'Lobster', cursive;
+}
+
+h2#title {
+	font-family: 'Lobster', cursive;
+}
+
+a#nav-btn {
+	margin-top: 10px;
+}
+
+
+/* Seach Bar Welcome#Index */
 input#search {
 	width: 400px;
     height: 40px;
@@ -31,6 +73,26 @@ input.search-btn {
 	border:none;
 	height: 40px;
 	margin-top: 3px;
+}
+
+/* Seach Bar Nav Bar */
+input#search.search-nav {
+	width: 300px;
+    height: 30px;
+    margin-top: 40px;
+    margin: 0px;
+    border-right: #18bc9c;
+/*    border-radius: 30px;*/
+    text-align: center;
+}
+
+input.search-nav-btn {
+	background-color: #18bc9c;
+	border:none;
+	height: 30px;
+	margin-top: 3px;
+	color: #fff;
+	margin-right: 20px;
 }
 
 a.navbar-brand {
