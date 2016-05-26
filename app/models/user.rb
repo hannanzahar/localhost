@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
 	geocoded_by :address
   	after_validation :geocode 
 
-
  #  	this will allow you to have a form with multiple input that will allow you to search 
  #  	def address
  #  		[street, city, state, country].compact.join(', ')

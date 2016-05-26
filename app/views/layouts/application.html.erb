@@ -72,8 +72,7 @@
       </div>
       <div class="collapse navbar-collapse navbar-menubuilder">
         <ul class="nav navbar-nav navbar-left">
-          <% if signed_in? -%>
-            Signed in as: <%= current_user.email %>
+          <% if signed_in? %>
           <li role="presentation" class="active">
             <%= link_to t(".all_user"), users_path %></li>
           <li role="presentation">
@@ -98,13 +97,6 @@
       </div>
     </div>
   </div>
-
-	<% if signed_in? %>
-  Signed in as: <%= current_user.email %>
-  <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-  <% else %>
-  <%= link_to 'Sign in', new_user_session_path %>
-  <% end %>
 
   <div id="flash">
     <% flash.each do |key, value| %>
