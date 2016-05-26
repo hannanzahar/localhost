@@ -1,124 +1,119 @@
-
-
 <html>
-  <head>
-    
-
-
-    
-  </head>
+<head>
+  <title>Friends Nearby %></title>
+</head>
 <body>
 
-<h1>Other users</h1>
- <% @users.each do |user|%>
-	<%= user.first_name %>
-	<br>
-	<%= user.address %>
+  <h1>Search Friends By Location</h1>
+  <% @users.each do |user|%>
+  <%= user.first_name %>
+  <br>
+  <%= user.address %>
 
-	<%= user.latitude %>
-	<%= user.longitude %>
-	<br>
-	<br>
-<%end%> 
+  <%= user.latitude %>
+  <%= user.longitude %>
+  <br>
+  <br>
+  <%end%> 
 
+  <div class="search-bar">
+    <%= form_tag users_path, :method => :get do %>
+    <%= text_field_tag :search, params[:search], placeholder:"Search For Friends Near You" %>
+    <%= submit_tag "Find Now", :name => nil, class: "search-btn" %>
+    <% end %>
+  </div>  
 
+  <div class="buttons" style="padding: 30px">
+    <%= link_to "edit", edit_user_path(current_user.id) %>
+  </div>
 
-<%= link_to "edit", edit_user_path(current_user.id) %>
-
-
-
-
-
-
-<div style='width: 100%; margin-top: -1.55%;'>
-  <div id="map" style='width: 100%; height: 400px;'></div>
-</div>
-
-
-<script type="text/javascript">
-handler = Gmaps.build('Google');
-  handler.buildMap({ provider: {}, internal: {id: "map"}}, function(){
-  markers = handler.addMarkers([{"lat":40.7127837,"lng":-74.0059413,"infowindow":"ghnhg"},{"lat":3.148147,"lng":101.6158446,"infowindow":"Feeding sam"},{"lat":4.18433,"lng":102.0542321,"infowindow":"JFeed"},{"lat":3.492095,"lng":103.3895446,"infowindow":"Pekan Laksa"},{"lat":3.1577405,"lng":101.712167,"infowindow":"KLCC Feed"}]);
-  handler.bounds.extendWith(markers);
-  handler.fitMapToBounds();
-});
+  <div style='width: 100%; margin-top: -1.55%;'>
+    <div id="map" style='width: 100%; height: 400px;'></div>
+  </div>
 
 
-</script>
+  <script type="text/javascript">
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: "map"}}, function(){
+      markers = handler.addMarkers([{"lat":40.7127837,"lng":-74.0059413,"infowindow":"ghnhg"},{"lat":3.148147,"lng":101.6158446,"infowindow":"Feeding sam"},{"lat":4.18433,"lng":102.0542321,"infowindow":"JFeed"},{"lat":3.492095,"lng":103.3895446,"infowindow":"Pekan Laksa"},{"lat":3.1577405,"lng":101.712167,"infowindow":"KLCC Feed"}]);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+    });
+
+  </script>
+
+  <div class="row" style="padding-top: 30px">
+    <!-- Not implemented on tutorial -->
+    <div class="col-md-4">
+      <div style="height: 300px; overflow-y: auto;">
+        <div class="panel panel-default">
+          <!-- Default panel contents -->
+          <div class="panel-heading">Travellers Nearby</div>
 
 
+          <!-- Table -->
+          <%if @users %>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @users.each_with_index do |user, index| %>
 
-<div class="row">
-  <!-- Not implemented on tutorial -->
-  <div class="col-md-4">
-    <div style="height: 300px; overflow-y: auto;">
-      <div class="panel panel-default">
-        <!-- Default panel contents -->
-        <div class="panel-heading">Registered Users</div>
-
-        <!-- Table -->
-      <%if @users %>
-        <table class="table">
-          <thead>
-          <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th></th>
-          </tr>
-          </thead>
-          <tbody>
-          <% @users.each_with_index do |user, index| %>
-           
               <tr>
                 <td><%= index +=1 %></td>
                 <td><%= user.first_name%></td>
                 <td>
                   <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
-                              "data-sid" => current_user.id, "data-rip" => user.id %>
+                  "data-sid" => current_user.id, "data-rip" => user.id %>
                 </td>
               </tr>
-           
-          <% end %>
-               </tbody>
-        </table>
+
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
       </div>
+      <hr>
 
-    </div>
-    <hr>
-    <h3>Your Conversations</h3>
-
-    <div style="height: 400px; overflow-y: auto;">
-      <% if @conversations.any? %>
+      <div class="your-convos" style="padding: 30px">
+        <h3>Your Conversations</h3>
+        <div style="height: 400px; overflow-y: auto;">
+          <% if @conversations.any? %>
           <ul class="media-list">
             <% @conversations.each do |conversation| %>
-                <li class="media">
-                  <%= image_tag("http://placehold.it/50x50", class: "media-object pull-left") %>
-                  <div class="media-body">
-                    <%= link_to "", conversation_path(conversation), class: "conversation", "data-cid" => conversation.id %>
-                        
-                        <p><%= conversation.messages.last.nil? ? "No messages" : truncate(conversation.messages.last.body, length: 45) %></p>
-                  </div>
-                </li>
+            <li class="media">
+              <%= image_tag("http://placehold.it/50x50", class: "media-object pull-left") %>
+              <div class="media-body">
+                <%= link_to "", conversation_path(conversation), class: "conversation", "data-cid" => conversation.id %>
+
+                <p><%= conversation.messages.last.nil? ? "No messages" : truncate(conversation.messages.last.body, length: 45) %></p>
+              </div>
+            </li>
 
             <% end %>
           </ul>
-      <% else %>
+          <% else %>
           <p>You have no conversations. Click send message with any user to create one.</p>
-      <% end %>
+          <% end %>
+        </div>
+        <% end %>
+      </div>
+
+      <div class="col-md-4">
+
+      </div>
+
     </div>
-  <% end %>
-
-  </div>
-
-  <div class="col-md-4">
-
-  </div>
-
-</div>
 
 
-</body>
-</html>
+  </body>
+  </html>
 
 
 
