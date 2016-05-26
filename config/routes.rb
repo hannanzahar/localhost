@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
 
   resources :reviews
+
+  resources :friendships
+
   devise_for :users
   # devise_for :models
   authenticated :user do
