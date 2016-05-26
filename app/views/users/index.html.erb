@@ -6,12 +6,10 @@
   <div class="find-users" style="padding-left: 20px">
     <h1 id="title">Find Users Nearby</h1>
     <% @users.each do |user|%>
-    <%= link_to user.first_name, user_path(user.id) %>
-    <br>
-    <%= user.address %>
-
-    <%= user.latitude %>
-    <%= user.longitude %>
+    <h4 id="title"><%= link_to user.first_name + " " + user.last_name, user_path(user.id) %><h4>
+    <p><b>Location: </b><%= user.address %></p>
+    <p><%= user.latitude %></p>
+    <p><%= user.longitude %></p>
     <br>
     <%end%> 
 
@@ -58,7 +56,7 @@
                 </thead>
                 <tbody>
                   <% @users.each_with_index do |user, index| %>
-                  
+
                   <tr>
                     <td><%= index +=1 %></td>
                     <td><%= user.first_name%></td>
@@ -67,7 +65,7 @@
                       "data-sid" => current_user.id, "data-rip" => user.id %>
                     </td>
                   </tr>
-                  
+
                   <% end %>
                 </tbody>
               </table>
