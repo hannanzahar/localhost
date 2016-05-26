@@ -18,13 +18,15 @@
 	<%= user.latitude %>
 	<%= user.longitude %>
 	<br>
-	<br>
+
 <%end%> 
 
 
 
 <%= link_to "edit", edit_user_path(current_user.id) %>
+<br>
 
+<hr class="style1">
 
 
 
@@ -47,7 +49,7 @@ handler = Gmaps.build('Google');
 </script>
 
 
-
+<hr class="style1">
 <div class="row">
   <!-- Not implemented on tutorial -->
   <div class="col-md-4">
@@ -84,7 +86,7 @@ handler = Gmaps.build('Google');
       </div>
 
     </div>
-    <hr>
+    <hr class="style1">
     <h3>Your Conversations</h3>
 
     <div style="height: 400px; overflow-y: auto;">
@@ -93,7 +95,7 @@ handler = Gmaps.build('Google');
             <% @conversations.each do |conversation| %>
                 <li class="media">
                 <!-- profile pic-->
-                  <%= image_tag("http://placehold.it/50x50", class: "media-object pull-left") %>
+                  <%= image_tag(conversation_interlocutor(conversation).avatar.url , class: "media-object pull-left", height:"70", width:"70" )  %>
                   <div class="media-body">
                     <%= link_to "", conversation_path(conversation), class: "conversation", "data-cid" => conversation.id %>
                         <h4 class="media-heading"><%= conversation_interlocutor(conversation).first_name %></h4>
