@@ -1,15 +1,8 @@
 
 
-<html>
-  <head>
-    
-
-
-    
-  </head>
-<body>
 
 <h1>Other users</h1>
+<p>Please click edit and let it load then come back plz </p>
  <% @users.each do |user|%>
 	<%= link_to user.first_name, user_path(user.id) %>
 	<br>
@@ -37,16 +30,7 @@
 </div>
 
 
-<script type="text/javascript">
-handler = Gmaps.build('Google');
-handler.buildMap({ provider: {}, internal: {id: "map"}}, function(){
-  markers = handler.addMarkers(<%=raw @hash.to_json %>);
-  handler.bounds.extendWith(markers);
-  handler.fitMapToBounds();
-});
 
-
-</script>
 
 
 <hr class="style1">
@@ -119,9 +103,17 @@ handler.buildMap({ provider: {}, internal: {id: "map"}}, function(){
 
 </div>
 
+<script type="text/javascript">
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: "map"}}, function(){
+  markers = handler.addMarkers(<%=raw @hash.to_json %>);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+});
 
-</body>
-</html>
+
+</script>
+
 
 
 
