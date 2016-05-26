@@ -45,7 +45,6 @@ class FriendshipsController < ApplicationController
     else
       redirect_to :back, :notice => "Sorry! Could not confirm friend!"
     end
-    
   end
 
   # DELETE /friendships/1
