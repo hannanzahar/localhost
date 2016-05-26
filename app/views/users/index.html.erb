@@ -1,29 +1,23 @@
+<html>
+  <head>      
+  </head>
+<body>
 
+<div class="find-users" style="padding-left: 20px">
+  <h1>Find Users Nearby</h1>
+  <% @users.each do |user|%>
+  	<%= link_to user.first_name, user_path(user.id) %>
+  	<br>
+  	<%= user.address %>
+  	<%= user.latitude %>
+  	<%= user.longitude %>
+  	<br>
+  <%end%> 
 
-
-<h1>Other users</h1>
-<p>Please click edit and let it load then come back plz </p>
- <% @users.each do |user|%>
-	<%= link_to user.first_name, user_path(user.id) %>
-	<br>
-	<%= user.address %>
-
-	<%= user.latitude %>
-	<%= user.longitude %>
-	<br>
-
-<%end%> 
-
-
-
-<%= link_to "edit", edit_user_path(current_user.id) %>
-<br>
+<%= link_to "Edit Your Profile", edit_user_path(current_user.id) %>
+<div>
 
 <hr class="style1">
-
-
-
-
 
 <div style='width: 100%; margin-top: -1.55%;'>
   <div id="map" style='width: 100%; height: 400px;'></div>
@@ -34,7 +28,7 @@
 
 
 <hr class="style1">
-<div class="row">
+<div class="row" style="padding-left: 20px">
   <!-- Not implemented on tutorial -->
   <div class="col-md-4">
     <div style="height: 300px; overflow-y: auto;">
@@ -100,7 +94,6 @@
   <div class="col-md-4">
 
   </div>
-
 </div>
 
 <script type="text/javascript">

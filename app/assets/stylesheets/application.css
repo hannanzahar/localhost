@@ -15,7 +15,36 @@
  *= require_self
  *= require_tree .
  
+/* Seach Bar */
+input#search {
+	width: 400px;
+    height: 40px;
+    margin-top: 40px;
+    margin: 0px;
+    border-right: #18bc9c;
+/*    border-radius: 30px;*/
+    text-align: center;
+}
 
+input.search-btn {
+	background-color: #18bc9c;
+	border:none;
+	height: 40px;
+	margin-top: 3px;
+}
+
+a.navbar-brand {
+	font-family: 'Lobster', cursive;
+	font-size: 40px;
+}
+
+img.pic_image_circle {
+	-webkit-border-radius: 50%;
+ 	-moz-border-radius: 50%;
+ 	border-radius: 50%;
+ 	width: 50%;
+
+}
 
 /*		* {
 			margin: 0;
