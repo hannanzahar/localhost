@@ -1,0 +1,52 @@
+<nav class="navbar navbar-default" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/welcome/index">Local Host</a>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="padding-bottom: 20px">
+<!--     <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Link</a></li>
+      <li><a href="#">Link</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+          <li class="divider"></li>
+          <li><a href="#">One more separated link</a></li>
+        </ul>
+      </li> -->
+      <!--  </ul> -->
+      <div class="col-sm-6 col-md-6">
+        <form class="navbar-form" role="search" style="width:60%; margin-left: 30%" action="/users" method="get">
+          <div class="flexsearch">
+            <input type="text" class="form-control" placeholder="Find Friends Nearby" name="search">
+            <input class="flexsearch--submit" type="submit" value=" &#x2708" color: "#18bc9c"></input>
+          </div>
+        </form>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+        <% @user_fullname = current_user.first_name + " " + current_user.last_name %>
+        <li><a href="/users/<%= current_user.id %>" style="margin-top: 10px"><%= @user_fullname %><%= image_tag current_user.avatar, class: 'avatar-xs'%></a></li>
+        <% end %>
+        <li style="margin-top: 10px"><a href="/users" style="height: 50%">Chat</a></li>
+        <% if signed_in? %>  
+        <li style="margin-top: 10px"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+        <% else %>
+        <li><%= link_to 'Sign In', new_user_session_path %></li> 
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </nav>
