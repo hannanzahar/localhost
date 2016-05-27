@@ -1,6 +1,6 @@
-@<h2><%=@user.first_name %> 
+<h2 id="title"><%=@user.first_name %> 
 <%= @user.last_name %></h2>
-<p><strong>Email: </strong> <%=@user.email %> </p>
+<p><b>Email: </b> <%=@user.email %> </p>
 <p> <%=@user.address%> <%= @user.latitude %>
 	<%= @user.longitude %></p>
 
@@ -33,7 +33,6 @@
         <% @user.requested_friendships.each do |request| %>
         <li>
           <%= request.first_name %> <%= request.last_name %> 
-          <%byebug%>
           <%= link_to "Accept", friendship_path(request.id), :method => "put" %> 
           <%= link_to "Decline", friendship_path(request.id), :method => :delete %>
         </li>
