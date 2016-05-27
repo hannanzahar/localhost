@@ -2,7 +2,7 @@
   <div class="chatboxtitle">
     <i class="fa fa-comment"></i>
 
-    <h1><%= @receiver.first_name %> </h1>
+    <h1><%= @receiver.first_name.capitalize %> </h1>
   </div>
   <div class="chatboxoptions">
     <%= link_to "#", class: "toggleChatBox", "data-cid" => @conversation.id do %>
