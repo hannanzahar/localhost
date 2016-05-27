@@ -163,6 +163,11 @@ a#nav-btn {
 	margin-bottom:20px;
 }
 
+a.btn.btn-primary.btn-block {
+	background-color: #18bc9c;
+	color: #fff;
+}
+
 /* Seach Bar */
 input#search {
 	width: 400px;
@@ -211,4 +216,9 @@ img.pic_image_circle {
  	-moz-border-radius: 50%;
  	border-radius: 50%;
  	width: 50%;
+}
+
+h3.heading-desc {
+	font-family: 'Lobster', cursive;
+	font-size: 40px;
 }
