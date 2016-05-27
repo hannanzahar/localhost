@@ -17,9 +17,12 @@
         <li class="menuItem">
           <div class="search-nav">
             <br>
-            <%= form_tag users_path, :method => :get do %>
-            <%= text_field_tag :search, params[:search], class: "search-nav", placeholder:"Find New Friends Nearby" %>
-            <%= submit_tag "Find Now", :name => nil, class: "search-nav-btn" %>
+            <% unless signed_in? %>
+            <% else %>
+              <%= form_tag users_path, :method => :get do %>
+              <%= text_field_tag :search, params[:search], class: "search-nav", placeholder:"Find New Friends Nearby" %>
+              <%= submit_tag "Find Now", :name => nil, class: "search-nav-btn" %>
+            <% end %>
             <% end %>
           </div>
         </li>

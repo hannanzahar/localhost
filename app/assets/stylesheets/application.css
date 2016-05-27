@@ -30,24 +30,6 @@
 	*= require welcome
 	*= require_self
 	*= require_tree .
- 
-/* ----- New Nav Bar -----*/
-.caret-up {
-    width: 0; 
-    height: 0; 
-    border-left: 4px solid rgba(0, 0, 0, 0);
-    border-right: 4px solid rgba(0, 0, 0, 0);
-    border-bottom: 4px solid;
-    
-    display: inline-block;
-    margin-left: 2px;
-    vertical-align: middle;
-}
-
-
-ul.nav li.dropdown:hover > ul.dropdown-menu {
-    display: block;    
-}
 
 /* ----- Avatar -----*/
 /*.avatar {
@@ -103,7 +85,7 @@ input#search {
     height: 40px;
     margin-top: 40px;
     margin: 0px;
-    border-right: #18bc9c;
+/*    border-right: #18bc9c;*/
 /*    border-radius: 30px;*/
     text-align: center;
 }
