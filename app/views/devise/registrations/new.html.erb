@@ -3,20 +3,18 @@
     <div class="form-signin mg-btm">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %><%= devise_error_messages! %>
 
-      <h3 class="heading-desc">SignUp Now</h3>
+      <h3 class="heading-desc">Sign Up Now</h3>
 
       <div class="social-box"> 
         <a href="/auth/facebook" class="btn btn-primary btn-block">
-          Login with Facebook
+          Sign Up with Facebook
         </a>
       </div>
 
       <div class="main">  
         <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email"%>
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder:"Password" %>
+        
+        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder:"Passwords (6 characters minimum)" %>
 
         <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder:"Comfirm Your Password" %>
 
