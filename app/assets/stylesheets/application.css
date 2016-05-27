@@ -58,11 +58,13 @@ div.intro-header {
 
 .avatar-xs {
 	margin-left: 7px;
-	width: 10%;
-	height: 10%;
+/*	width: 10%;*/
+/*	height: 10%;*/
 	-webkit-border-radius: 50%;
  	-moz-border-radius: 50%;
  	border-radius: 50%;
+ 	width: 30px;
+ 	height: 24px;
 }
 
 
