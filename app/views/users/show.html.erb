@@ -49,3 +49,37 @@
 <%= link_to "All users", users_path %>
 
 
+
+<% if current_user.id != @user.id%>
+  <%= link_to "Review", new_user_review_path(user_id: params[:id],reviewer_id: @user.id) %>
+<p>zfdgc</p>
+
+  <%end%> 
+
+<table>
+  <thead>
+    <tr>
+      <th>Comment</th>
+      <th>Star</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+ <% @reviews.each do |review| %>
+      <tr>
+        <td><%= review.comment %></td>
+        <td class="stars" id="<%= review.id %>"></td>
+        <script>
+          $("#<%= review.id %>.stars").raty({
+            path: '/assets',
+            readOnly: true,
+            score: <%= review.star %>
+          });
+        </script>
+        <td><%= review.user.first_name %></td>
+        <td><%= link_to 'Show', user_review_path(@user.id, review.id) %></td>
+        <td><%= link_to 'Edit', edit_user_review_path(@user.id, review.id) %></td>
+        <td><%= link_to 'Destroy', user_review_path(@user.id, review.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+<% end %>

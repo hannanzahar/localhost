@@ -6,12 +6,13 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    @reviewed_user_id = params[:reviewer_id]
   end
   
   def create 
     @review = current_user.reviews.create(review_params)
      respond_to do |format|
-     format.html { redirect_to reviews_url, notice: 'Reviews was successfully create.' }
+     format.html { redirect_to user_path(params[:review][:reviewed_user]), notice: 'Reviews was successfully create.' }
      format.json { head :no_content }
     end
   end
@@ -30,7 +31,7 @@ class ReviewsController < ApplicationController
      if @review.present?
       @review.destroy
      respond_to do |format|
-     format.html { redirect_to reviews_url, notice: 'Reviews was successfully destroyed.' }
+     format.html { redirect_to user_reviews_url, notice: 'Reviews was successfully destroyed.' }
      format.json { head :no_content }
       end
     end
@@ -38,6 +39,6 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:comment, :star)
+    params.require(:review).permit(:comment, :star, :reviewed_user, :user_id)
   end
 end

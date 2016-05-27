@@ -18,9 +18,9 @@
         <td><%= review.comment %></td>
         <td class="stars" id="<%= review.star %>"></td>
         <td><%= review.user.first_name %></td>
-        <td><%= link_to 'Show', review %></td>
-        <td><%= link_to 'Edit', edit_review_path(review) %></td>
-        <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', user_review_path(id: review.id) %></td>
+        <td><%= link_to 'Edit', edit_user_review_path(id: review.id) %></td>
+        <td><%= link_to 'Destroy', user_review_path(id: review.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,7 +32,7 @@
 
 
 
-<%= link_to 'New Review', new_review_path %>
+<%= link_to 'New Review', new_user_review_path %>
 
 <script>
   $('.stars').raty({

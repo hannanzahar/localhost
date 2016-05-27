@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 	     :recoverable, :rememberable, :trackable, :validatable
     has_many :conversations, :foreign_key => :sender_id
     has_many :reviews
+    
 
 	# uncomment this when the form is ready for uploading image
 	mount_uploader :avatar, AvatarUploader

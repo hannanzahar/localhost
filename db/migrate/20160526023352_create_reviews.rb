@@ -4,7 +4,8 @@ class CreateReviews < ActiveRecord::Migration
       t.text :comment
       t.integer :star
       t.references :user, index: true, foreign_key: true
-
+      t.integer :reviewed_user
+      
       t.timestamps null: false
     end
   end
