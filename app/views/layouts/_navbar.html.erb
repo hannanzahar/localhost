@@ -19,10 +19,16 @@
             <br>
             <% unless signed_in? %>
             <% else %>
-              <%= form_tag users_path, :method => :get do %>
-              <%= text_field_tag :search, params[:search], class: "search-nav", placeholder:"Find New Friends Nearby" %>
-              <%= submit_tag "Find Now", :name => nil, class: "search-nav-btn" %>
-            <% end %>
+            <div class="flexsearch">
+              <div class="flexsearch--wrapper">
+                <form class="flexsearch--form" action="/users" method="get" >
+                  <div class="flexsearch--input-wrapper">
+                  <input class="flexsearch--input" name="search" type="search" placeholder="search">
+                  </div>
+                  <input class="flexsearch--submit" type="submit" value="&#10140;"/>
+                </form>
+              </div>
+            </div>
             <% end %>
           </div>
         </li>
@@ -32,9 +38,9 @@
         <% end %>
         <li class="menuItem"><a href="/users" id="nav-btn">Chat</a></li>
         <% if signed_in? %>
-          <li class="menuItem" style="margin-top: 10px;" id="nav-btn"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+        <li class="menuItem" style="margin-top: 10px;" id="nav-btn"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <% else %> 
-          <li class="menuItem" style="margin-top: 10px;" id="nav-btn"><%= link_to 'Sign In', new_user_session_path %></li> 
+        <li class="menuItem" style="margin-top: 10px;" id="nav-btn"><%= link_to 'Sign In', new_user_session_path %></li> 
         <% end %>
       </ul>
     </div>

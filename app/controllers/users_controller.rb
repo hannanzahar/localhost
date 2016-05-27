@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
 
   def index
+    
     if params[:search].present?
       @users = User.near(params[:search], 100).where.not("id = ?",current_user.id).order("created_at DESC")
       @hash = Gmaps4rails.build_markers(@users) do |user, marker|
@@ -21,8 +22,6 @@ class UsersController < ApplicationController
       end
     end
    @conversations = Conversation.involving(current_user).order("created_at DESC")
-    
-
 
   end
 
