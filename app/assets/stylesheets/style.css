@@ -886,6 +886,7 @@ fieldset[disabled] .btn-link:focus {
   font-size: 12px;
   line-height: 1.083;
   border-radius: 3px;
+  background-color: #1abc9c;
 }
 .btn-tip {
   font-weight: 300;
