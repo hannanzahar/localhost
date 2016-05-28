@@ -12,6 +12,7 @@ class UsersController < ApplicationController
         marker.lng user.longitude
         marker.infowindow user.first_name
       end
+
     else
       @user = User.all
       if current_user
@@ -30,7 +31,7 @@ class UsersController < ApplicationController
     if current_user
       @conversations = Conversation.involving(current_user).order("created_at DESC")
     end
-end
+  end
     
   def edit
     @user = current_user

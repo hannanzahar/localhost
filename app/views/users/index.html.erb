@@ -15,50 +15,52 @@
 
 
 
-    <div class="Content">
-      <div class="Wrapper">
 
-        
-        <div class="col-md-6 LeftContent">
-          <% @users.each do |user|%>
-          <div class="contact-cards">
-            <div class="row">
-              <div class="col-xs-3" >
-                
-                <%=image_tag user.avatar, class: "img-responsive" %>
-              </div>
-              <div class="col-xs-6" style='padding-left: 5px;' >
-                <h3 style='margin: 0px;' >
-                  <%= link_to [user.first_name, user.last_name].join(" "), user_path(user.id) %>
-                  
-                </h3>
-                <p>
-                  <%= user.address %>
+      <div class="Content">
+        <div class="Wrapper">
 
-                  <%= user.interests %>
-                </p>
-                
-              </div>
-              <div class="col-xs-3 removePadding" style='text-align: right;'>
+          
+            <div class="col-md-6 LeftContent">
+              <% @users.each do |user|%>
+                   <div class="contact-cards-index-page">
+                    <div class="row">
+                        <div class="col-xs-3" >
+                            
+                              <%=image_tag user.avatar, class: "img-responsive" %>
+                        </div>
+                        <div class="col-xs-6" style='padding-left: 5px;' >
+                              <h3 style='margin: 0px;' >
+                                    <%= link_to [user.first_name, user.last_name].join(" "), user_path(user.id) %>
+                                    
+                              </h3>
+                              <p>
+                                <%= user.address %>
 
-                <% if current_user %>
-                <%= link_to "             View Profile           ", user_path(user.id), class: "btn btn-success btn-xs"  %>
-                <br>
-                <%= link_to "Add Friend", create_friendship_path(user.id), method: :post,  class: "btn btn-success btn-xs"  %>
-                <br>
+                                <%= user.interests %>
+                              </p>
+                            
+                        </div>
+                        <div class="col-xs-3 removePadding" style='text-align: right;'>
 
-                <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %> 
+                          <% if current_user %>
+                            <%= link_to "             View Profile           ", user_path(user.id), class: "btn btn-success btn-xs"  %>
+                            <br>
+                             <%= link_to "Add Friend", create_friendship_path(user.id), method: :post,  class: "btn btn-success btn-xs"  %>
+                            <br>
 
-                <%else%>
+                             <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %> 
 
-                <%= link_to " Login to View", "/", class: "btn btn-success btn-xs"  %>
-                <%end%>
+                          <%else%>
 
-              </div>
+                              <%= link_to " Login to View", "/", class: "btn btn-success btn-xs"  %>
+                          <%end%>
+
+                        </div>
+                      </div>
+                  </div>
+                <%end%> 
             </div>
-          </div>
-          <%end%> 
-        </div>
+
 
         <div class="col-md-6 right" >
           <!-- Your second column here -->
