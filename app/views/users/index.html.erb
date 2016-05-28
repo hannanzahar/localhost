@@ -1,6 +1,6 @@
 <html>
-  <head>      
-  </head>
+<head>      
+</head>
 <body>
 
 <h1>Other users</h1>
@@ -41,16 +41,7 @@
 </div>
 
 
-<script type="text/javascript">
-handler = Gmaps.build('Google');
-handler.buildMap({ provider: {}, internal: {id: "map"}}, function(){
-  markers = handler.addMarkers(<%=raw @hash.to_json %>);
-  handler.bounds.extendWith(markers);
-  handler.fitMapToBounds();
-});
 
-
-</script>
 
 
 <hr class="style1">
@@ -87,44 +78,123 @@ handler.buildMap({ provider: {}, internal: {id: "map"}}, function(){
           <% end %>
                </tbody>
         </table>
+      <% end %>
+
+  <div class="find-users" style="padding-left: 20px">
+    <h1 id="title">Find Users Nearby</h1>
+    <% @users.each do |user|%>
+    <h4 id="title"><%= link_to user.first_name + " " + user.last_name, user_path(user.id) %><h4>
+    <p><b>Location: </b><%= user.address %></p>
+    <p><%= user.latitude %></p>
+    <p><%= user.longitude %></p>
+    <br>
+    <%end%> 
+
+    <%= link_to "Edit Your Profile", edit_user_path(current_user.id) %>
+    <div>
+
+      <hr class="style1">
+
+      <div style='width: 100%; margin-top: -1.55%;'>
+        <div id="map" style='width: 100%; height: 400px;'></div>
+
       </div>
 
-    </div>
-    <hr class="style1">
-    <h3>Your Conversations</h3>
 
-    <div style="height: 400px; overflow-y: auto;">
-      <% if @conversations.any? %>
-          <ul class="media-list">
-            <% @conversations.each do |conversation| %>
-                <li class="media">
+      <script type="text/javascript">
+        handler = Gmaps.build('Google');
+        handler.buildMap({ provider: {}, internal: {id: "map"}}, function(){
+          markers = handler.addMarkers(<%=raw @hash.to_json %>);
+          handler.bounds.extendWith(markers);
+          handler.fitMapToBounds();
+        });
+
+
+      </script>
+
+
+      <hr class="style1">
+      <div class="row" style="padding-left: 20px">
+        <!-- Not implemented on tutorial -->
+        <div class="col-md-4">
+          <div style="height: 300px; overflow-y: auto;">
+            <div class="panel panel-default">
+              <!-- Default panel contents -->
+              <div class="panel-heading">Registered Users</div>
+
+              <!-- Table -->
+              <%if @users %>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @users.each_with_index do |user, index| %>
+
+                  <tr>
+                    <td><%= index +=1 %></td>
+                    <td><%= user.first_name%></td>
+                    <td>
+                      <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
+                      "data-sid" => current_user.id, "data-rip" => user.id %>
+                    </td>
+                  </tr>
+
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+          <hr class="style1">
+          <h3>Your Conversations</h3>
+
+          <div style="height: 400px; overflow-y: auto;">
+            <% if @conversations.any? %>
+            <ul class="media-list">
+              <% @conversations.each do |conversation| %>
+              <li class="media">
                 <!-- profile pic-->
-                  <%= image_tag(conversation_interlocutor(conversation).avatar.url , class: "media-object pull-left", height:"70", width:"70" )  %>
-                  <div class="media-body">
-                    <%= link_to "", conversation_path(conversation), class: "conversation", "data-cid" => conversation.id %>
-                        <h4 class="media-heading"><%= conversation_interlocutor(conversation).first_name %></h4>
-                        <p><%= conversation.messages.last.nil? ? "No messages" : truncate(conversation.messages.last.body, length: 45) %></p>
-                  </div>
-                </li>
+                <%= image_tag(conversation_interlocutor(conversation).avatar.url , class: "media-object pull-left", height:"70", width:"70" )  %>
+                <div class="media-body">
+                  <%= link_to "", conversation_path(conversation), class: "conversation", "data-cid" => conversation.id %>
+                  <h4 class="media-heading"><%= conversation_interlocutor(conversation).first_name %></h4>
+                  <p><%= conversation.messages.last.nil? ? "No messages" : truncate(conversation.messages.last.body, length: 45) %></p>
+                </div>
+              </li>
 
+              <% end %>
+            </ul>
+            <% else %>
+            <p>You have no conversations. Click send message with any user to create one.</p>
             <% end %>
-          </ul>
-      <% else %>
-          <p>You have no conversations. Click send message with any user to create one.</p>
-      <% end %>
-    </div>
-  <% end %>
+          </div>
+          <% end %>
 
-  </div>
+        </div>
 
-  <div class="col-md-4">
+        <div class="col-md-4">
 
-  </div>
-</div>
+        </div>
+      </div>
+
+<script type="text/javascript">
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: "map"}}, function(){
+  markers = handler.addMarkers(<%=raw @hash.to_json %>);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+});
 
 
-</body>
-</html>
+</script>
+
+    </body>
+    </html>
 
 
 

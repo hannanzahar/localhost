@@ -1,0 +1,123 @@
+<h2><%=@user.first_name %> 
+<%= @user.last_name %></h2>
+<p><strong>Email: </strong> <%=@user.email %> </p>
+<p> <%=@user.address%> <%= @user.latitude %>
+	<%= @user.longitude %></p>
+
+<div class="row">
+      <div class="col-md-12">
+            <p class="text-center">Copyright © Local Host Ltd 2016 & Next Academy</p>
+      </div>
+</div>
+
+
+<% if @user.nearbys(100) %>
+	<% @user.nearbys(100).all.each do |location| %>
+	  <li><%= link_to location.address, location %> (<%= location.distance.round(2) %> miles)</li>
+	<% end %>
+<% end %>
+
+<% unless current_user == @user %>
+    <%= link_to "Add Friend", friendships_path(:friend_id => @user.id), :method => :post %>
+<% end %>
+
+<h4>Friends</h4>
+<ul>
+    <% @user.friends.each do |friend| %>
+    <li>
+      <%= friend.first_name %> <%= friend.last_name %>
+      <% if current_user == @user %>
+        <%= link_to "Remove", friendship_path(friend.id), :method => :delete %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<% if current_user == @user %>
+    <h4>Friend Requests</h4>
+    <ul>
+        <% @user.requested_friendships.each do |request| %>
+        <li>
+          <%= request.first_name %> <%= request.last_name %> 
+          <%byebug%>
+          <%= link_to "Accept", friendship_path(request.id), :method => "put" %> 
+          <%= link_to "Decline", friendship_path(request.id), :method => :delete %>
+        </li>
+      <% end %>
+    </ul>
+<% end %>
+
+
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@user.latitude}%2C#{@user.longitude}" %>
+
+<%= link_to "edit profile", edit_user_path %>
+
+<%= link_to "All users", users_path %>
+
+
+<div class="container">
+      <div class="row">
+            <div class="col-md-4">
+                  <div class="contact-cards">
+                        <div class="row">
+                              <div class="col-xs-5">
+                                    <img src="http://bootdey.com/img/Content/user_1.jpg" alt=""  class="img-responsive"/>
+                              </div>
+                              <div class="col-xs-7 removePadding">
+                                    <h3>
+                                          Munna JS
+                                    </h3>
+                                    <p>
+                                          munna.js@3mdigital.co.in<br>
+                                          9999999999
+                                    </p>
+                                    <button class="btn btn-warning">Call Now</button>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+            <div class="col-md-4">
+                  <div class="contact-cards">
+                        <div class="row">
+                              <div class="col-xs-5">
+                                    <img src="http://bootdey.com/img/Content/user_2.jpg" alt=""  class="img-responsive"/>
+                              </div>
+                              <div class="col-xs-7 removePadding">
+                                    <h3>
+                                          Munni PHP
+                                    </h3>
+                                    <p>
+                                          Munni.php@3mdigital.co.in<br>
+                                          9999999999
+                                    </p>
+                                    <button class="btn btn-warning">Call Now</button>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+            <div class="col-md-4">
+                  <div class="contact-cards">
+                        <div class="row">
+                              <div class="col-xs-5">
+                                    <img src="http://bootdey.com/img/Content/user_3.jpg" alt=""  class="img-responsive"/>
+                              </div>
+                              <div class="col-xs-7 removePadding">
+                                    <h3>
+                                          Munna CSS
+                                    </h3>
+                                    <p>
+                                          munna.css@3mdigital.co.in<br>
+                                          9999999999
+                                    </p>
+                                    <button class="btn btn-warning">Call Now</button>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+      </div>
+      <div class="row">
+            <div class="col-md-12">
+                  <p class="text-center">Copyright © Local Host Ltd 2016 & Next Academy</p>
+            </div>
+      </div>
+</div>
