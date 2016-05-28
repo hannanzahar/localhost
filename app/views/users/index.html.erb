@@ -7,50 +7,67 @@
     <div class="find-users" style="text-align: center">
       <h1 id="title"> Hosts Nearby </h1><br>
     </div>
-      <div class="Content">
-        <div class="Wrapper">
+    <div class="Content">
+      <div class="Wrapper">
 
-          
-            <div class="col-md-6 LeftContent">
-              <% @users.each do |user|%>
-                   <div class="contact-cards-index-page">
-                    <div class="row">
-                        <div class="col-xs-3" >
-                            
-                              <%=image_tag user.avatar, class: "img-responsive" %>
-                        </div>
-                        <div class="col-xs-6" style='padding-left: 5px;' >
-                              <h3 style='margin: 0px;' >
-                                    <%= link_to [user.first_name, user.last_name].join(" "), user_path(user.id) %>
-                                    
-                              </h3>
-                              <p>
-                                <%= user.address %>
+      <div class="row text-center">
+      <div class="col-md-4">
+        <h4 class="location-tag">New York City</h4>
+        <%= image_tag("nyc.jpg", size: '335x344', class: "img-circle") %>
+        <p class="text-muted" style="padding-top: 50px">Home to the Empire State Building, Times Square, Statue of Liberty and other iconic sites, New York City is a fast-paced, globally influential center of art, culture, fashion and finance.</p>
+      </div>
+      <div class="col-md-4">
+        <h4 class="location-tag">Reykjavik</h4>
+        <%= image_tag("bluelagoon.jpg", size: '335x344',class: "img-circle") %>
+        <p class="text-muted" style="padding-top: 50px">Iceland, a Nordic island nation, is defined by its dramatic volcanic landscape of geysers, hot springs, waterfalls, glaciers and black-sand beaches. The capital, Reykjavik, home to the majority of the population, runs on geothermal power and offers a renowned nightlife scene as well as Viking history museums.</p>
+      </div>
+      <div class="col-md-4">
+        <h4 class="location-tag">Tokyo</h4>
+        <%= image_tag("tokyo.jpg", size: '335x344', class: "img-circle") %>
+        <p class="text-muted" style="padding-top: 50px">Tokyo, Japan’s bustling capital, mixes the ultramodern and the traditional, from neon-lit skyscrapers and anime shops to cherry trees and temples. The opulent Meiji Shinto Shrine is known for its towering gate and surrounding forests.</p>
+      </div>
 
-                                <%= user.interests %>
-                              </p>
-                            
-                        </div>
-                        <div class="col-xs-3 removePadding" style='text-align: right;'>
 
-                          <% if current_user %>
-                            <%= link_to "             View Profile           ", user_path(user.id), class: "btn btn-success btn-xs"  %>
-                            <br>
-                             <%= link_to "Add Friend", create_friendship_path(user.id), method: :post,  class: "btn btn-success btn-xs"  %>
-                            <br>
+        <div class="col-md-6 LeftContent">
+          <% @users.each do |user|%>
+          <div class="contact-cards-index-page">
+            <div class="row">
+              <div class="col-xs-3" >
+                <%=image_tag user.avatar, class: "img-responsive", id: "usernearbypic" %>
+              </div>
+              <div class="col-xs-6" style='padding-left: 5px;' >
+                <h3 style='margin: 0px;' >
+                  <%= link_to [user.first_name, user.last_name].join(" "), user_path(user.id) %>
 
-                             <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %> 
+                </h3>
+                <p>
+                Currently in: <%= user.address %><br>
+                Interests: <%= user.interests %><br>
+                Local Hacks: <%= user.tips %><br>
+                Favourite Destinations: <%= user.faves %>
+                </p>
 
-                          <%else%>
+              </div>
+              <div class="col-xs-3 removePadding" style='text-align: right;'>
 
-                              <%= link_to " Login to View", "/", class: "btn btn-success btn-xs"  %>
-                          <%end%>
+                <% if current_user %>
+                <%= link_to "             View Profile           ", user_path(user.id), class: "btn btn-success btn-xs"  %>
+                <br>
+                <%= link_to "Add Friend", create_friendship_path(user.id), method: :post,  class: "btn btn-success btn-xs"  %>
+                <br>
 
-                        </div>
-                      </div>
-                  </div>
-                <%end%> 
+                <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %> 
+
+                <%else%>
+
+                <%= link_to " Login to View", "/", class: "btn btn-success btn-xs"  %>
+                <%end%>
+
+              </div>
             </div>
+          </div>
+          <%end%> 
+        </div>
 
 
         <div class="col-md-6 right" >

@@ -25,15 +25,15 @@
             <% end %>
           </div>
         </li>
-        <li class="menuItem"><a href="/users" id="nav-btn" style="font-family: 'Lobster', cursive">Users</a></li>
+        <li class="menuItem"><a href="/users" id="nav-btn" style="font-family: 'Lobster', cursive">Users Nearby</a></li>
         <% if current_user %>
-        <li class="menuItem"><a href="/users/<%= current_user.id%>" id="nav-btn" style="font-family: 'Lobster', cursive"><%= current_user.email %></a></li>
+        <li class="menuItem"><a href="/users/<%= current_user.id %>#profile" id="nav-btn" style="font-family: 'Lobster', cursive"><%= current_user.email %></a></li>
         <% else %>
         <% end %>
         <% if signed_in? %>
-          <li class="menuItem" style="margin-top: 10px;" id="nav-btn" style="font-family: 'Lobster', cursive"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+          <li class="menuItem" style="margin-top: 10px; font-family: 'Lobster', cursive" id="nav-btn"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <% else %> 
-          <li class="menuItem" style="margin-top: 10px;" id="nav-btn" style="font-family: 'Lobster', cursive"><%= link_to 'Sign In', new_user_session_path %></li> 
+          <li class="menuItem" style="margin-top: 10px; font-family: 'Lobster', cursive" id="nav-btn"><%= link_to 'Sign In', new_user_session_path %></li> 
         <% end %>
       </ul>
     </div>
