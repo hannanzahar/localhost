@@ -619,3 +619,32 @@ span.round-tab:hover {
 textarea.form-control {
     height: 200px;
 }
+
+/*friend*/
+
+.contact-cards{
+      border:1px solid #ccc;
+      padding: 20px;
+      margin:10px;
+      .removePadding{
+            padding:0 15px 0 0;
+      }
+      h3{
+            margin:0px;
+            font-size:20px;
+      }
+      p{
+            font-size:14px;
+            color:#808080;
+      }
+      button{
+            border-radius:0px;
+            background:orange;
+            padding:4px 10px;
+            &:hover{
+                  background:#fff;
+                  border:1px solid orange;
+                  color:orange;
+            }
+      }
+}
