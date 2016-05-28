@@ -21,7 +21,7 @@
 //= require gmaps/google
 //= require_self
 //= require_tree
-
+//= require stickUp.min.js
     
 function nextTab(elem) {
     $(elem).next().find('a[data-toggle="tab"]').click();

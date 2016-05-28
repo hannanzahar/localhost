@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
   
-
-
   def index
     if params[:search].present?
       if current_user
@@ -14,6 +12,7 @@ class UsersController < ApplicationController
         marker.lng user.longitude
         marker.infowindow user.first_name
       end
+      @header = "Members Nearby"
     else
       @user = User.all
       if current_user
@@ -27,14 +26,16 @@ class UsersController < ApplicationController
         marker.lng user.longitude
         marker.infowindow [user.first_name, user.last_name].join(" ")
       end
+      @header = "Our Members"
     end
     if current_user
       @conversations = Conversation.involving(current_user).order("created_at DESC")
     end
   end
-
+    
   def edit
     @user = current_user
+    @user.geocode
   end
 
   def show
@@ -67,16 +68,13 @@ class UsersController < ApplicationController
   end
 
   def address
-      current_user.location
-      
+    current_user.location 
   end
 
   def update
     @user = current_user
-
     @user.geocode
     if @user.update_attributes(user_from_params)
-      
       redirect_to @user
     else
       render 'edit'
@@ -84,7 +82,6 @@ class UsersController < ApplicationController
   end
 
   def delete
-
   end
 
   def show_nearby_locations
