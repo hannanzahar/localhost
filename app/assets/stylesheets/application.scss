@@ -1,0 +1,59 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ /*
+
+
+ *= require_self
+ *= require_tree .
+ 
+
+
+
+/* Seach Bar */
+
+html, body {
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+  margin: 0;
+  padding: 0;
+} 
+
+input#search {
+	width: 400px;
+    height: 40px;
+    margin-top: 40px;
+    margin: 0px;
+    border-right: #18bc9c;
+/*    border-radius: 30px;*/
+    text-align: center;
+}
+
+input.search-btn {
+	background-color: #18bc9c;
+	border:none;
+	height: 40px;
+	margin-top: 3px;
+}
+
+a.navbar-brand {
+	font-family: 'Lobster', cursive;
+	font-size: 40px;
+}
+
+img.pic_image_circle {
+	-webkit-border-radius: 50%;
+ 	-moz-border-radius: 50%;
+ 	border-radius: 50%;
+ 	width: 50%;
+
+}
+

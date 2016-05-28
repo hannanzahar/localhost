@@ -6,6 +6,12 @@
  * Based on Bootstrap
 */
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
+hr.style1 {
+  height: 10px;
+  border: 0;
+  box-shadow: 0 10px 10px -10px #8c8b8b inset;
+}
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -791,7 +797,9 @@ pre code {
   width: 58.33333333%;
 }
 .col-xs-6 {
+  vertical-align: text-top;
   width: 50%;
+  padding-top: 0px;
 }
 .col-xs-5 {
   width: 41.66666667%;

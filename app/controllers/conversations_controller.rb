@@ -13,7 +13,7 @@ class ConversationsController < ApplicationController
 
   def show
     @conversation = Conversation.find(params[:id])
-    @reciever = interlocutor(@conversation)
+    @receiver = interlocutor(@conversation)
     @messages = @conversation.messages
     @message = Message.new
   end

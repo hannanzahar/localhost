@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Reviews</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comment</th>
+      <th>Star</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reviews.each do |review| %>
+      <tr>
+        <td><%= review.comment %></td>
+        <td class="stars" id="<%= review.star %>"></td>
+        <td><%= review.user.first_name %></td>
+        <td><%= link_to 'Show', user_review_path(id: review.id) %></td>
+        <td><%= link_to 'Edit', edit_user_review_path(id: review.id) %></td>
+        <td><%= link_to 'Destroy', user_review_path(id: review.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<br>
+
+
+
+<%= link_to 'New Review', new_user_review_path %>
+
+<script>
+  $('.stars').raty({
+    path: '/assets',
+    readOnly: true,
+    score: $('.stars').attr('id')
+  });
+</script>
