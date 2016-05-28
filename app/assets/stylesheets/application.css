@@ -12,7 +12,6 @@
  *
  /*
 
-<<<<<<< HEAD
 
 	*= require animate
 	*= require bootstrap
@@ -51,7 +50,7 @@
 }
 
 div.intro-header {
-	background-image: url(group-beach.jpg);
+	background-image: url(diving.jpg);
 	opacity: 0.8;
 	z-index: -1;
 }
@@ -192,7 +191,9 @@ input#search.search-nav {
     height: 30px;
     margin-top: 40px;
     margin: 0px;
-    border-right: #18bc9c;
+    right: 200px;
+    position: relative;
+ /*   border-right: #18bc9c;*/
 /*    border-radius: 30px;*/
     text-align: center;
 }

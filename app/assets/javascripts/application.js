@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-
 //= require modernizr-2.8.3.min
 //= require private_pub
 //= require chat
@@ -22,7 +21,16 @@
 //= require_self
 //= require_tree
 //= require stickUp.min.js
-    
+//= require owl.carousel.js
+//= require PIE_IE678.js
+//= require PIE_IE9.js
+//= require users.js
+//= require classie.js
+//= require wow.min.js
+//= require bootstrap.js
+//= require script.js
+//= require uiMorphingButton_inflow.js
+
 function nextTab(elem) {
     $(elem).next().find('a[data-toggle="tab"]').click();
 }
