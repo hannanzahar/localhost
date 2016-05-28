@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
 
+  get "welcome/index"
+  get "welcome/show"
+  get "welcome/test"
 
-
-  resources :friendships
+  #friendships
+  resources :friendships, except: :create
+  post '/friendships', to: "friendships#create", as: "create_friendship"
+  #users
   devise_for :users
-  # devise_for :models
+ 
   authenticated :user do
     root 'users#index'
   end
@@ -14,21 +19,18 @@ Rails.application.routes.draw do
       get "/" => "devise/sessions#new"
     end
   end
+  resources :users, only: [:show, :edit, :update, :destroy, :index]
+
 
   resources :conversations do
     resources :messages
   end
-  # get 'users/index'
-  # get 'users/new'
-  # get 'users/create'
-  # get 'users/update'
-  # get 'users/delete'
-  resources :users, only: [:show, :edit, :update, :destroy, :index]
+
 #OMNIAUTH
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
 
-  get "welcome/index"
+
   # authenticated do
   #  root 'welcome#dashboard', as: :authenticated_root
   # end

@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       @hash = Gmaps4rails.build_markers(@user_locs) do |user, marker|
         marker.lat user.latitude
         marker.lng user.longitude
-        marker.infowindow user.first_name
+        marker.infowindow [user.first_name, user.last_name].join(" ")
       end
     end
    @conversations = Conversation.involving(current_user).order("created_at DESC")
@@ -32,6 +32,7 @@ class UsersController < ApplicationController
 
   def show
      @user = User.find(params[:id])
+      @conversations = Conversation.involving(current_user).order("created_at DESC")
   end
 
   def address
