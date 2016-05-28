@@ -27,10 +27,9 @@
           </div>
         </li>
         <li class="menuItem"><a href="/users" id="nav-btn">Chat</a></li>
-        <% if current_user %>
-        <% @user_fullname = current_user.first_name + " " + current_user.last_name %>
-        <li class="menuItem"><a href="/users/<%= current_user.id %>" id="nav-btn"> <%= @user_fullname %></a></li>
-        <% end %>
+
+        <li class="menuItem"><a href="/users/<%= current_user.id %>" id="nav-btn"> Your Profile</a></li>
+
         
         <% if signed_in? %>
           <li class="menuItem" style="margin-top: 10px;" id="nav-btn"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
