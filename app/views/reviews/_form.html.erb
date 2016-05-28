@@ -1,4 +1,4 @@
-<%= form_for(@review, url: user_reviews_path) do |f| %>
+<%= form_for [@user, @review] do |f| %>
   <% if @review.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
@@ -16,8 +16,8 @@
     <%= f.text_area :comment %>
   </div>
   <div id="user_stars">
-  <%= f.hidden_field :reviewed_user, value: @reviewed_user_id %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :reviewer_id, value: current_user.id %>
+
   </div>
   <div class="actions">
     <%= f.submit %>

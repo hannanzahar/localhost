@@ -17,7 +17,7 @@
       <tr>
         <td><%= review.comment %></td>
         <td class="stars" id="<%= review.star %>"></td>
-        <td><%= review.user.first_name %></td>
+        <td><%= review.reviewer.first_name %></td>
         <td><%= link_to 'Show', user_review_path(id: review.id) %></td>
         <td><%= link_to 'Edit', edit_user_review_path(id: review.id) %></td>
         <td><%= link_to 'Destroy', user_review_path(id: review.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
