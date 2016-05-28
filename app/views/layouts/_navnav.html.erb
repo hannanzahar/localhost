@@ -1,6 +1,6 @@
 <!-- NAV BAR -->
 <nav class="navbar-default stuckMenu isStuck" role="navigation">
-  <div class="container" style="padding-bottom: 5px;margin-left: 0px;margin-right: 0px; background-color: none">
+  <div class="container" style="padding-bottom: 5px;margin-left: 0px;margin-right: 0px;">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
         <span class="sr-only">Toggle navigation</span>
@@ -10,10 +10,11 @@
       </button>
       <a class="navbar-brand" href="/welcome/index">Local Host</a>
     </div>
+
     <div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
       <ul class="nav navbar-nav">
 
-<li class="menuItem">
+        <li class="menuItem">
           <div class="search-nav">
             <br>
             <% unless signed_in? %>
@@ -22,7 +23,7 @@
               <div class="flexsearch--wrapper">
                 <form class="flexsearch--form" action="/users" method="get" >
                   <div class="flexsearch--input-wrapper">
-                  <input class="flexsearch--input" name="search" type="search" placeholder="Find Friends Nearby">
+                  <input class="flexsearch--input" name="search" type="search" placeholder="Search by Location">
                   </div>
                   <input class="flexsearch--submit" type="submit" value="&#10140;"/>
                 </form>
@@ -30,15 +31,16 @@
             </div>
             <% end %>
           </div>
-
+        </li>
+        <li class="menuItem"><a href="/users/<%= current_user.id %>" id="nav-btn"> <%= @user_fullname %><%= image_tag current_user.avatar, class: 'avatar-xs'%></a></li>
         <li class="menuItem"><a href="/users" id="nav-btn">Chat</a></li>
-        <li class="menuItem"><a href="/users/edit" id="nav-btn">Your Profile</a></li>
         <% if signed_in? %>
-          <li class="menuItem" style="margin-top: 10px;" id="nav-btn"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+        <li class="menuItem" style="margin-top: 10px;" id="nav-btn"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <% else %> 
-          <li class="menuItem" style="margin-top: 10px;" id="nav-btn"><%= link_to 'Sign In', new_user_session_path %></li> 
+        <li class="menuItem" style="margin-top: 10px;" id="nav-btn"><%= link_to 'Sign In', new_user_session_path %></li> 
         <% end %>
       </ul>
     </div>
   </div>
 </nav> 
+

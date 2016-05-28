@@ -281,16 +281,16 @@
  }
 
  .flexsearch--submit {
- 	position: absolute;
+/* 	position: absolute;*/
  	right: 0;
  	top: 0;
- 	display: block;
+/* 	display: block;*/
  	width: 60px;
  	height: 60px;
  	padding: 0;
  	border: none;
- 	margin-top: 20px; /* margin-top + border-width */
- 	margin-right: 5px; /* border-width */
+/* 	margin-top: 20px;  margin-top + border-width 
+ 	margin-right: 5px; /* border-width */*/
  	background: transparent;
  	color: #888;
  	font-family: 'Helvetica', sans-serif;

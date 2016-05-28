@@ -31,16 +31,14 @@
       <div class="col-sm-6 col-md-6">
         <form class="navbar-form" role="search" style="width:60%; margin-left: 30%" action="/users" method="get">
           <div class="flexsearch">
-            <input type="text" class="form-control" placeholder="Find Friends Nearby" name="search">
+            <input type="text" class="form-control" placeholder="Search by Location" name="search">
             <input class="flexsearch--submit" type="submit" value=" &#x2708" color: "#18bc9c"></input>
           </div>
         </form>
       </div>
       <ul class="nav navbar-nav navbar-right">
-        <% if current_user %>
-        <% @user_fullname = current_user.first_name + " " + current_user.last_name %>
         <li><a href="/users/<%= current_user.id %>" style="margin-top: 10px"><%= @user_fullname %><%= image_tag current_user.avatar, class: 'avatar-xs'%></a></li>
-        <% end %>
+
         <li style="margin-top: 10px"><a href="/users" style="height: 50%">Chat</a></li>
         <% if signed_in? %>  
         <li style="margin-top: 10px"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
