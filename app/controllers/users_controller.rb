@@ -12,7 +12,7 @@ class UsersController < ApplicationController
         marker.lng user.longitude
         marker.infowindow user.first_name
       end
-      @header = "Nearby Members"
+      @header = "Members Nearby"
     else
       @user = User.all
       if current_user
