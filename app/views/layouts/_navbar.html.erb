@@ -26,6 +26,7 @@
           </div>
         </li>
         <li class="menuItem"><a href="/users" id="nav-btn">Chat</a></li>
+        
         <% if current_user %>
           <li class="menuItem"><a href="/users/<%= current_user.id %>" id="nav-btn"> Your Profile</a></li>
         <%end%>
