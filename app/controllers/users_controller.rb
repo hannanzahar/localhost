@@ -39,9 +39,31 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @user_friends = []
+    @user.friendships.each do |friendship|
+      
+      friend = User.find(friendship.friend_id)
+      @user_friends << friend
+    end
+    @user_friends = @user_friends.uniq
+  
     @reviews = @user.reviews
     @review = Review.new
     @conversations = Conversation.involving(current_user).order("created_at DESC")
+    # byebug
+    # @friend_locs.each do |f|
+    #   friend = @user.friends[f]
+    # end
+
+    @hash = Gmaps4rails.build_markers(@user_friends) do |user, marker|
+          
+        marker.lat user.latitude
+        marker.lng user.longitude
+        marker.infowindow [user.first_name, user.last_name].join(" ")
+      end
+    # find friends- get their marker refer index
+    # @friends_locs = **
+    # @hash = blablabla (@friends_locs?)
   end
 
   def address
