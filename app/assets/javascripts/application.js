@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+
 //= require modernizr-2.8.3.min
 //= require private_pub
 //= require chat
@@ -19,5 +20,13 @@
 //= require turbolinks
 //= require underscore
 //= require gmaps/google
+//= require_self
+//= require_tree
 
-//= require_tree .
+    
+function nextTab(elem) {
+    $(elem).next().find('a[data-toggle="tab"]').click();
+}
+function prevTab(elem) {
+    $(elem).prev().find('a[data-toggle="tab"]').click();
+}
