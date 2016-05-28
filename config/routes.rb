@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
 
   resources :friendships
+
   devise_for :users
   # devise_for :models
   authenticated :user do
@@ -23,7 +24,10 @@ Rails.application.routes.draw do
   # get 'users/create'
   # get 'users/update'
   # get 'users/delete'
-  resources :users, only: [:show, :edit, :update, :destroy, :index]
+  resources :users do
+    resources :reviews
+  end
+
 #OMNIAUTH
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
