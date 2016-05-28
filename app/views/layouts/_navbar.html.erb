@@ -20,17 +20,13 @@
             <% unless signed_in? %>
             <% else %>
               <%= form_tag users_path, :method => :get do %>
-              <%= text_field_tag :search, params[:search], class: "search-nav", placeholder:"Find New Friends Nearby" %>
-              <%= submit_tag "Find Now", :name => nil, class: "search-nav-btn" %>
+              <%= text_field_tag :search, params[:search], class: "search-nav", placeholder:"Search by Location" %>
             <% end %>
             <% end %>
           </div>
         </li>
         <li class="menuItem"><a href="/users" id="nav-btn">Chat</a></li>
-
         <li class="menuItem"><a href="/users/<%= current_user.id %>" id="nav-btn"> Your Profile</a></li>
-
-        
         <% if signed_in? %>
           <li class="menuItem" style="margin-top: 10px;" id="nav-btn"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <% else %> 

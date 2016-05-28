@@ -34,8 +34,13 @@
             </div>
          
       </div>
-      <% end %> 
     </div>
   </div>
-</div>
+
+    <div>
+      <%= link_to "Sign In With Facebook", "/auth/facebook" %>
+    </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
 

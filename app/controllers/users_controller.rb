@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
   
-
-
   def index
     if params[:search].present?
       if current_user
@@ -32,33 +30,27 @@ class UsersController < ApplicationController
     if current_user
       @conversations = Conversation.involving(current_user).order("created_at DESC")
     end
+end
     
-
-
-  end
-
   def edit
     @user = current_user
+    @user.geocode
   end
 
   def show
-    # byebug
      @user = User.find(params[:id])
      @reviews = Review.where(reviewed_user: params[:id])
 
   end
 
   def address
-      current_user.location
-      
+    current_user.location 
   end
 
   def update
     @user = current_user
-
     @user.geocode
     if @user.update_attributes(user_from_params)
-      
       redirect_to @user
     else
       render 'edit'
@@ -66,7 +58,6 @@ class UsersController < ApplicationController
   end
 
   def delete
-
   end
 
   def show_nearby_locations

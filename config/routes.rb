@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-
   resources :friendships, except: :create
   post '/friendships', to: "friendships#create", as: "create_friendship"
 
