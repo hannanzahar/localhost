@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
 
 
-  resources :friendships
+  resources :friendships, except: :create
+  post '/friendships', to: "friendships#create", as: "create_friendship"
 
   devise_for :users
   # devise_for :models

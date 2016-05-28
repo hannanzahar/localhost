@@ -4,7 +4,11 @@ class UsersController < ApplicationController
 
   def index
     if params[:search].present?
-      @users = User.near(params[:search], 100).where.not("id = ?",current_user.id).order("created_at DESC")
+      if current_user
+        @users = User.near(params[:search], 100).where.not("id = ?",current_user.id).order("created_at DESC")
+      else
+        @users = User.all
+      end
       @hash = Gmaps4rails.build_markers(@users) do |user, marker|
         marker.lat user.latitude
         marker.lng user.longitude
@@ -12,15 +16,22 @@ class UsersController < ApplicationController
       end
     else
       @user = User.all
-      @users = User.where.not("id = ?",current_user.id).order("created_at DESC")
+      if current_user
+        @users = User.where.not("id = ?",current_user.id).order("created_at DESC")
+      else
+        @users = User.all
+      end
       @user_locs = @users.where.not(latitude: nil)
       @hash = Gmaps4rails.build_markers(@user_locs) do |user, marker|
         marker.lat user.latitude
         marker.lng user.longitude
-        marker.infowindow user.first_name
+        marker.infowindow [user.first_name, user.last_name].join(" ")
       end
     end
-   @conversations = Conversation.involving(current_user).order("created_at DESC")
+
+    if current_user
+      @conversations = Conversation.involving(current_user).order("created_at DESC")
+    end
     
 
 
