@@ -11,10 +11,9 @@
       <% else %>
       <li><a href="#profile" id="targeted" >Profile</a></li>
       <li><%= link_to "Add Friend", friendships_path(:friend_id => @user.id), :method => :post %></li>
-      <% end %>
       <li><a href="#reviews">Reviews</a></li>
-      <li><a href="#message">Message Me</a></li>
-      
+      <li><a href="#message">Chat</a></li>
+      <% end %>
     </ul>
   </div>
   <div class="main">
