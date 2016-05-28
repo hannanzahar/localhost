@@ -4,13 +4,13 @@
   </div>
 
   <!-- FullScreen -->
-  <div class="intro-header" style="background-color: gray; padding-bottom: 300px; width: 100%">
-    <div class="col-xs-12 text-center abcen1" style="position: relative; width: 90%;">
-      <h1 class="h1_home wow fadeIn" data-wow-delay="0.4s">Welcome to Local Host!</h1>
-      <h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">Fit right in, right away</h3><br>
+  <div class="intro-header" style="padding-bottom: 300px; width: 100%">
+    <div class="col-xs-12 text-center abcen1" style="position: relative; width: 1270px; margin-top: 200px;">
+      <h1 class="h1_home wow fadeIn" data-wow-delay="0.4s" style="font-family: 'Lobster', cursive">Welcome to Local Host!</h1>
+      <h3 class="h3_home wow fadeIn" data-wow-delay="0.6s">Fit right in. Right away</h3><br>
       <div class="search-bar">
         <%= form_tag users_path, :method => :get do %>
-        <%= text_field_tag :search, params[:search], placeholder:"Search For Friends Near You" %>
+        <%= text_field_tag :search, params[:search], placeholder:"Find New Friends Nearby" %>
         <%= submit_tag "Find Now", :name => nil, class: "search-btn" %>
         <% end %>
       </div>
@@ -27,29 +27,29 @@
   <div id="whatis" class="content-section-b" style="border-top: 0">
     <div class="container">
       <div class="col-md-6 col-md-offset-3 text-center wrap_title">
-        <h2>How does it work?</h2>
-        <p class="lead" style="margin-top:0">Do as the locals do</p>
+        <h2>Do as the locals do</h2>
+        <p class="lead" style="margin-top:0">And fit in, right away!</p>
       </div>
 
       <div class="row">
         <div class="col-sm-4 wow fadeInDown text-center">
           <%= image_tag("googlemap.png" , class: "rotate") %>
           <h3>Find a Friend</h3>
-          <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
+          <p class="lead">Travelling alone can be a daunting experience, especially when you're in a foreign place. Connect with others nearby so that you'll never have to travel alone!</p>
           <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
         </div><!-- /.col-lg-4 -->
 
         <div class="col-sm-4 wow fadeInDown text-center">
           <%= image_tag("meetup.png" , class: "rotate") %>
           <h3>Meet Up</h3>
-          <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
+          <p class="lead">Experience the local culture and cuisine with someone who knows the city like the back of their hand</p>
           <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
         </div><!-- /.col-lg-4 -->
 
         <div class="col-sm-4 wow fadeInDown text-center">
           <%= image_tag("check.png" , class: "rotate") %>
-          <h3>Verification</h3>
-          <p class="lead">Epsum factorial non deposit quid pro quo hic escorol. Olypian quarrels et gorilla congolium sic ad nauseum. </p>
+          <h3>Reviews</h3>
+          <p class="lead">Leave your friend a message for other travellers to connect!</p>
           <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
         </div><!-- /.col-lg-4 -->
 
@@ -72,8 +72,6 @@
           <p class="lead">
             Find a New Friend within your vicinity based on similar interests or travel experience.
           </p>
-          <p><a class="btn btn-embossed btn-primary" href="#" role="button">View Details</a> 
-           <a class="btn btn-embossed btn-info" href="#" role="button">Visit Website</a></p>
          </div>   
        </div>
      </div>
@@ -92,8 +90,6 @@
           <p class="lead">
             Find a New Friend within your vicinity based on similar interests or travel experience.
           </p>
-          <p><a class="btn btn-embossed btn-primary" href="#" role="button">View Details</a> 
-           <a class="btn btn-embossed btn-info" href="#" role="button">Visit Website</a></p>
          </div>   
        </div>
      </div>
@@ -206,11 +202,11 @@
     <div class="col-md-6 col-md-offset-3 text-center">
       <div class="mockup-content">
         <div class="morph-button wow pulse morph-button-inflow morph-button-inflow-1">
-          <button type="button "><span>Free Download</span></button>
+          <button type="button "><span>Try it Now!</span></button>
           <div class="morph-content">
             <div>
               <div class="content-style-form content-style-form-4 ">
-                <h2 class="morph-clone">Free Download</h2>
+                <h2 class="morph-clone">Try it Now!</h2>
                 <form>
                   <p><label>Your Email Address</label><input type="text"/></p>
                   <p><button>Subscribe me</button></p>

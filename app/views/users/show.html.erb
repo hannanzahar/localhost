@@ -1,26 +1,26 @@
+
 <div class="container ">
   <h1 class="text-center"><%= @user.first_name %> <%= @user.last_name %></h1>
   <div class="nav-center" style="height: 30px;">
     <ul class="nav nav-pills">
-      <% if current_user = @user.id %>
+      <% if current_user == @user %>
       <li><a href="#profile" id="targeted" >Profile</a></li>
       <li><a href="#edit_profile">Edit Profile</a></li>
       <li><a href="#friends">Friends</a></li>
       <li><a href="#reviews">Reviews</a></li>
       <% else %>
       <li><a href="#profile" id="targeted" >Profile</a></li>
-      <li><a href="#friends">Friends</a></li>
+      <li><%= link_to "Add Friend", friendships_path(:friend_id => @user.id), :method => :post %></li>
+      <% end %>
       <li><a href="#reviews">Reviews</a></li>
       <li><a href="#message">Message Me</a></li>
-      <% end %>
+      
     </ul>
   </div>
   <div class="main">
     <div class="mainContent clearfix">
       <div id="profile" class="logo-avatar">
-        
-          <a href=""><img class="pic img-cricle" src="<%=@user.avatar%>" alt="profile_pic"></a>
-        
+        <a href=""><img class="pic img-cricle" src="<%=@user.avatar%>" alt="profile_pic"></a>
         <div class="monitor" style="width: 1100px; margin-left: 15px; margin-top: 350px; height: initial;">
           <h4>Bio</h4>
           <p><%= @user.bio %></p>
@@ -166,72 +166,95 @@
      <h2 class="header">Friends</h2>
      <div class="container">
       <div class="row">
-            <div class="col-md-4">
-                  <div class="contact-cards">
-                        <div class="row">
-                              <div class="col-xs-5">
-                                    <img src="http://bootdey.com/img/Content/user_1.jpg" alt=""  class="img-responsive"/>
-                              </div>
-                              <div class="col-xs-7 removePadding">
-                                    <h3>
-                                          Munna JS
-                                    </h3>
-                                    <p>
-                                          munna.js@3mdigital.co.in<br>
-                                          9999999999
-                                    </p>
-                                    <button class="btn btn-warning">Call Now</button>
-                              </div>
-                        </div>
-                  </div>
+        <div class="col-md-4">
+          <div class="contact-cards">
+            <div class="row">
+              <div class="col-xs-5">
+                <img src="http://bootdey.com/img/Content/user_1.jpg" alt=""  class="img-responsive"/>
+              </div>
+              <div class="col-xs-7 removePadding">
+                <h3>
+                  Munna JS
+                </h3>
+                <p>
+                  munna.js@3mdigital.co.in<br>
+                  9999999999
+                </p>
+                <button class="btn btn-warning">Call Now</button>
+              </div>
             </div>
-            <div class="col-md-4">
-                  <div class="contact-cards">
-                        <div class="row">
-                              <div class="col-xs-5">
-                                    <img src="http://bootdey.com/img/Content/user_2.jpg" alt=""  class="img-responsive"/>
-                              </div>
-                              <div class="col-xs-7 removePadding">
-                                    <h3>
-                                          Munni PHP
-                                    </h3>
-                                    <p>
-                                          Munni.php@3mdigital.co.in<br>
-                                          9999999999
-                                    </p>
-                                    <button class="btn btn-warning">Call Now</button>
-                              </div>
-                        </div>
-                  </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="contact-cards">
+            <div class="row">
+              <div class="col-xs-5">
+                <img src="http://bootdey.com/img/Content/user_2.jpg" alt=""  class="img-responsive"/>
+              </div>
+              <div class="col-xs-7 removePadding">
+                <h3>
+                  Munni PHP
+                </h3>
+                <p>
+                  Munni.php@3mdigital.co.in<br>
+                  9999999999
+                </p>
+                <button class="btn btn-warning">Call Now</button>
+              </div>
             </div>
-            <div class="col-md-4">
-                  <div class="contact-cards">
-                        <div class="row">
-                              <div class="col-xs-5">
-                                    <img src="http://bootdey.com/img/Content/user_3.jpg" alt=""  class="img-responsive"/>
-                              </div>
-                              <div class="col-xs-7 removePadding">
-                                    <h3>
-                                          Munna CSS
-                                    </h3>
-                                    <p>
-                                          munna.css@3mdigital.co.in<br>
-                                          9999999999
-                                    </p>
-                                    <button class="btn btn-warning">Call Now</button>
-                              </div>
-                        </div>
-                  </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="contact-cards">
+            <div class="row">
+              <div class="col-xs-5">
+                <img src="http://bootdey.com/img/Content/user_3.jpg" alt=""  class="img-responsive"/>
+              </div>
+              <div class="col-xs-7 removePadding">
+                <h3>
+                  Munna CSS
+                </h3>
+                <p>
+                  munna.css@3mdigital.co.in<br>
+                  9999999999
+                </p>
+                <button class="btn btn-warning">Call Now</button>
+              </div>
             </div>
+          </div>
+        </div>
       </div>
-      <div class="row">
-            <div class="col-md-12">
-                  <p class="text-center">Copyright © 3m Local Host Ltd 2016 & Next Academy</p>
-            </div>
+      <h4>Friends</h4>
+      <ul>
+        <% @user.friends.each do |friend| %>
+        <li>
+          <%= friend.first_name %> <%= friend.last_name %>
+          <% if current_user == @user %>
+          <%= link_to "Remove", friendship_path(friend.id), :method => :delete %>
+          <% end %>
+        </li>
+        <% end %>
+      </ul>
+
+      <% if current_user == @user %>
+      <h4>Friend Requests</h4>
+      <ul>
+        <% @user.requested_friendships.each do |request| %>
+        <li>
+          <%= request.first_name %> <%= request.last_name %> 
+          <%= link_to "Accept", friendship_path(request.id), :method => "put" %> 
+          <%= link_to "Decline", friendship_path(request.id), :method => :delete %>
+        </li>
+        <% end %>
+        <% end %>
+        <div class="row">
+          <div class="col-md-12">
+            <p class="text-center">Copyright © 3m Local Host Ltd 2016 & Next Academy</p>
+          </div>
+        </div>
       </div>
-</div>
-   </div>
-   <div id="reviews">
+    </div>
+    <div id="reviews">
      <h2 class="header">Reviews</h2>
    </div>
    <div id="message">
@@ -270,6 +293,5 @@
 
       });
     });
-
 
 </script>
