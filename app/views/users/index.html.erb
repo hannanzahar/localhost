@@ -45,8 +45,7 @@
                             <br>
                              <%= link_to "Add Friend", create_friendship_path(user.id), method: :post,  class: "btn btn-success btn-xs"  %>
                             <br>
-
-                             <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %> 
+                             <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %>
 
                           <%else%>
 

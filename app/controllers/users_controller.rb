@@ -32,9 +32,6 @@ class UsersController < ApplicationController
     if current_user
       @conversations = Conversation.involving(current_user).order("created_at DESC")
     end
-    
-
-
   end
 
   def edit
