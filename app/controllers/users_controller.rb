@@ -21,9 +21,6 @@ class UsersController < ApplicationController
       end
     end
    @conversations = Conversation.involving(current_user).order("created_at DESC")
-    
-
-
   end
 
   def edit
@@ -31,7 +28,11 @@ class UsersController < ApplicationController
   end
 
   def show
-     @user = User.find(params[:id])
+    @user = User.find(params[:id])
+    @reviews = @user.reviews
+    @review = Review.new
+    @conversations = Conversation.involving(current_user).order("created_at DESC")
+
   end
 
   def address

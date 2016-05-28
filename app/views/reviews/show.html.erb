@@ -1,0 +1,111 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @review.comment %>
+</p>
+
+<p>
+  <strong>Reviews<span id="average_rating"></span>(<%= User.average_rating(@review.id) %>)</strong>
+  <%= @review.star %>
+</p>
+
+
+
+<!-- sgadugasidhascfosapd -->
+
+<p>
+  <strong>Review by User:</strong>
+  <%= @review.user.email %>
+</p>
+<%= link_to 'Edit',  edit_user_review_path%> |
+<%= link_to 'Back', user_reviews_path %>
+
+
+
+<% if current_user.id != @review.user_id%>
+  <%= link_to "Review", new_user_review_path(user_id: params[:id],reviewer_id: @user.id) %>
+
+
+  <%end%> 
+
+<table>
+  <thead>
+    <tr>
+      <th>Comment</th>
+      <th>Star</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+ <% @reviews.each do |review| %>
+      <tr>
+        <td><%= review.comment %></td>
+        <td class="stars" id="<%= review.id %>"></td>
+        <script>
+          $("#<%= review.id %>.stars").raty({
+            path: '/assets',
+            readOnly: true,
+            score: <%= review.star %>
+          });
+        </script>
+        <td><%= review.user.first_name %></td>
+        <td><%= link_to 'Show', user_review_path(@user.id, review.id) %></td>
+        <td><%= link_to 'Edit', edit_user_review_path(@user.id, review.id) %></td>
+        <td><%= link_to 'Destroy', user_review_path(@user.id, review.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  $('#average_rating').raty({
+    path: '/assets',
+    scoreName: 'review[star]',
+    score: 1
+  });
+</script>
