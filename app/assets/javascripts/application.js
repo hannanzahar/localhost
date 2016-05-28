@@ -16,6 +16,7 @@
 //= require modernizr-2.8.3.min
 //= require private_pub
 //= require chat
+//= require user
 //= require turbolinks
 //= require gmaps/google
 //= require_self

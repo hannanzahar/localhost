@@ -1,78 +1,93 @@
 <html>
- <head>      
- </head>
+  <head>      
+  </head>
 <body>
 
-<div class="Container1">
-     <div class="find-users" style="text-align: center">
-     <h1> Hosts Nearby </h1>
-     </div>
 
 
 
-     <div class="Content">
-       <div class="Wrapper">
+<%= link_to "Edit Your Profile", edit_user_path(current_user.id) unless !current_user%>
 
-         
-           <div class="col-md-6 LeftContent">
-           <% if @users != nil %>
-             <% @users.each do |user|%>
-                  <div class="contact-cards">
-                   <div class="row">
-                       <div class="col-xs-3" >
-                             <img src="http://bootdey.com/img/Content/user_1.jpg" alt=""  class="img-responsive"/>
-                       </div>
-                       <div class="col-xs-6" style='padding-left: 5px;' >
-                             <h3>
-                                   <%= link_to [user.first_name, user.last_name].join(" "), user_path(user.id) %>
-                                   
-                             </h3>
-                             <p>
-                               <%= user.address %>
-
-                               <%= user.interests %>
-                             </p>
-                           
-                       </div>
-                       <div class="col-xs-3 removePadding" style='text-align: right;'>
-
-                           <%= link_to "             View Profile           ", user_path(user.id), class: "btn btn-success btn-xs"  %>
-                           <br>
-                            <%= link_to "Add Friend", create_friendship_path(user.id), method: :post,  class: "btn btn-success btn-xs"  %>
-                           <br>
-
-                            <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %> 
-                       </div>
-                     </div>
-                 </div>
-               <%end%> 
-             <%end%>
-           </div>
-
-           <div class="col-md-6 right" >
-             <!-- Your second column here -->
+ <div class="Container1">
+      <div class="find-users" style="text-align: center">
+      <h1> Hosts Nearby </h1>
+      </div>
 
 
-             <div style='width: 100%; height: 100%; '>
-               <div id="map" style='width: 100%; height: 800px;'></div>
-             </div>
-           </div>
-         
+
+      <div class="Content">
+        <div class="Wrapper">
+
+          
+            <div class="col-md-6 LeftContent">
+              <% @users.each do |user|%>
+                   <div class="contact-cards-index-page">
+                    <div class="row">
+                        <div class="col-xs-3" >
+                            
+                              <%=image_tag user.avatar, class: "img-responsive" %>
+                        </div>
+                        <div class="col-xs-6" style='padding-left: 5px;' >
+                              <h3 style='margin: 0px;' >
+                                    <%= link_to [user.first_name, user.last_name].join(" "), user_path(user.id) %>
+                                    
+                              </h3>
+                              <p>
+                                <%= user.address %>
+
+                                <%= user.interests %>
+                              </p>
+                            
+                        </div>
+                        <div class="col-xs-3 removePadding" style='text-align: right;'>
+
+                          <% if current_user %>
+                            <%= link_to "             View Profile           ", user_path(user.id), class: "btn btn-success btn-xs"  %>
+                            <br>
+                             <%= link_to "Add Friend", create_friendship_path(user.id), method: :post,  class: "btn btn-success btn-xs"  %>
+                            <br>
+
+                             <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %> 
+
+                          <%else%>
+
+                              <%= link_to " Login to View", "/", class: "btn btn-success btn-xs"  %>
+                          <%end%>
+
+                        </div>
+                      </div>
+                  </div>
+                <%end%> 
+            </div>
+
+            <div class="col-md-6 right" >
+              <!-- Your second column here -->
 
 
-       </div>
-     </div>
-   </div>
+              <div style='width: 100%; height: 100%; '>
+                <div id="map" style='width: 100%; height: 800px;'></div>
+              </div>
+            </div>
+          
 
 
-    <script type="text/javascript">
-       handler = Gmaps.build('Google');
-       handler.buildMap({ provider: {}, internal: {id: "map"}}, function(){
-         markers = handler.addMarkers(<%=raw @hash.to_json %>);
-         handler.bounds.extendWith(markers);
-         handler.fitMapToBounds();
-       });
-     </script>
+        </div>
+      </div>
+    </div>
+
+
+     <script type="text/javascript">
+        handler = Gmaps.build('Google');
+        handler.buildMap({ provider: {}, internal: {id: "map"}}, function(){
+          markers = handler.addMarkers(<%=raw @hash.to_json %>);
+          handler.bounds.extendWith(markers);
+          handler.fitMapToBounds();
+        });
+      </script>
+
+<!-- ============================================================ -->
+
+
 
 </body>
 </html>

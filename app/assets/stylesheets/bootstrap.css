@@ -797,7 +797,9 @@ pre code {
   width: 58.33333333%;
 }
 .col-xs-6 {
+  vertical-align: text-top;
   width: 50%;
+  padding-top: 0px;
 }
 .col-xs-5 {
   width: 41.66666667%;
