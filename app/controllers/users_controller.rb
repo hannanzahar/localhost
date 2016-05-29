@@ -26,7 +26,7 @@ class UsersController < ApplicationController
         marker.lng user.longitude
         marker.infowindow [user.first_name, user.last_name].join(" ")
       end
-      @header = "Members"
+      @header = "Our Members"
     end
     if current_user
       @conversations = Conversation.involving(current_user).order("created_at DESC")
