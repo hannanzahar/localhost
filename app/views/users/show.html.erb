@@ -2,7 +2,7 @@
 <div class="container ">
    <h1 class="text-center"><%= @user.first_name %> <%= @user.last_name %></h1>
    <div class="nav-center" style="height: 30px;">
-      <ul class="nav nav-pills">
+      <ul class="nav-profile nav-pills">
          <% if current_user == @user %>
          <li><a href="#profile" id="targeted" >Profile</a></li>
          <li><a href="#edit_profile">Edit Profile</a></li>
@@ -13,9 +13,8 @@
          <% else %>
          <li><a href="#profile" id="targeted" >Profile</a></li>
          <li><%= link_to "Add Friend", friendships_path(:friend_id => @user.id), :method => :post %></li>
-
          <li><a href="#reviews">Reviews</a></li>
-         <li><a href="#message">Chat</a></li>
+         <li><%= link_to "Send Message", "#", "data-sid" => current_user.id, "data-rip" => @user.id %></li>
          <% end %>
      </ul>
  </div>
@@ -23,7 +22,7 @@
   <div class="mainContent clearfix">
      <div id="profile" class="logo-avatar">
         <a href=""><img class="pic img-cricle" src="<%=@user.avatar%>" alt="profile_pic"></a>
-        <div class="monitor" style="width: 1100px; margin-left: 15px; margin-top: 350px; height: initial;">
+        <div class="monitor" style="width: 1000px; margin-top: 350px;height: initial; float:none;">
            <h4>Bio</h4>
            <p><%= @user.bio %></p>
            <h4>Interest</h4>
@@ -31,8 +30,7 @@
            <h4>Birthday</h4>
            <p><%= @user.birthdate %></p>
            <h4>Location</h4>
-           <p><%= @user.address%> <%=@user.country %>
-           </p>
+           <p><%= @user.address%></p>
        </div>
    </div>
    <div id="edit_profile">      
@@ -109,7 +107,7 @@
                        <%= form.file_field :avatar %>
 
                        <ul class="list-inline pull-right" style="text-align: center;">
-                          <li><button type="button" class="btn btn-primary next-step">Next</button></li>
+                          <li style="padding-right: 405px"><button type="button" class="btn btn-primary next-step">Next</button></li>
                       </ul>
                   </div>
 
@@ -146,10 +144,11 @@
                   </div>
 
                   <ul class="list-inline pull-right">
-                      <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                      <li><%= form.submit "Save and Continue", class: "btn btn-primary btn-info-full next-step" %></button></li>
+                      <li style="padding-right: 200px"><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                      <li style="padding-right: 200px"><%= form.submit "Save and Continue", class: "btn btn-primary btn-info-full next-step" %></button></li>
                       <% end %>
                   </ul>
+
               </div>
               <div class="clearfix"></div>
           </div>
@@ -239,15 +238,7 @@
     </div>
 
 
-     <script type="text/javascript">
-        handler = Gmaps.build('Google');
-        handler.buildMap({ provider: {}, internal: {id: "map"}}, function(){
-          markers = handler.addMarkers(<%=raw @hash.to_json %>);
-          handler.bounds.extendWith(markers);
-          handler.fitMapToBounds();
-        });
-      </script>
-
+     
    <!-- stop here -->
 </div>
 
@@ -273,28 +264,30 @@
     <tr>
        <td><%= review.comment %></td>
        <td class="stars" id="<%= review.id %>"></td>
-       <script>
-          $("#<%= review.id %>.stars").raty({
-             path: '/assets',
-             readOnly: true,
-             score: <%= review.star %>
-         });
-     </script>
      <td><%= review.user.first_name %></td>
      <td><%= link_to 'Edit', edit_user_review_path(@user, review.id) %></td>
      <td><%= link_to 'Destroy', user_review_path(@user.id, review.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
  </tr>
+ <script>
+    $("#<%= review.id %>.stars").raty({
+       path: '/assets',
+       readOnly: true,
+       score: <%= review.star %>
+   });
+</script>
  <% end %>
 </div>
-<div id="message">
-  <h2 class="header">MESSAGE - THROW THIS AWAY AFTER THIS</h2>
 </div>
 </div>
-</div>
+
+
 
 
 <script type="text/javascript">
 
+  $(document).ready(function(){
+    $('.map').hide()
+  });
   $(document).on('page:change', function () {
       //Initialize tooltips
       $('.nav-tabs > li a[title]').tooltip();
@@ -313,14 +306,25 @@
          var $active = $('.wizard .nav-tabs li.active');
          $active.next().removeClass('disabled');
          nextTab($active);
+         $('.map').show();
 
      });
       $(".prev-step").click(function (e) {
 
          var $active = $('.wizard .nav-tabs li.active');
          prevTab($active);
+         $('.map').hide();
 
      });
   });
 
+</script>
+
+<script type="text/javascript">
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: "map"}}, function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });
 </script>
