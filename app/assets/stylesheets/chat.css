@@ -54,17 +54,17 @@
     display: flex;
 }
 
-.chatboxcontent .avatar {
+.chatboxcontent .chatavatar {
     width: 40px;
     position: relative;
 }
 
-.chatboxcontent .avatar img {
+.chatboxcontent .chatavatar img {
     display: block;
     width: 100%;
 }
 
-.other .avatar:after {
+.other .chatavatar:after {
     content: "";
     position: absolute;
     top: 0;
@@ -86,11 +86,11 @@
     border-bottom-right-radius: 0;
 }
 
-.self .avatar {
+.self .chatavatar {
     order: 2;
 }
 
-.self .avatar:after {
+.self .chatavatar:after {
     content: "";
     position: absolute;
     bottom: 0;
