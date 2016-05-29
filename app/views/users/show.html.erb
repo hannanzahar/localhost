@@ -1,173 +1,166 @@
-<body style="background-color: rgba(70, 201, 175, 0.06)">
-<div class="container "  style="background-color: rgba(70, 201, 175, 0.06)">
- <h1 id="title" class="text-center"><%= @user.first_name %> <%= @user.last_name %></h1>
- <div class="nav-center" style="height: 30px;">
-  <ul class="nav-profile nav-pills" style="margin-left: 400px">
-   <% if current_user == @user %>
-   <li><a href="#profile" id="targeted" >Profile</a></li>
-   <li><a href="#edit_profile">Edit Profile</a></li>
-   <li><a href="#friends">Friends</a></li>
-   <% unless %>
-   <li><a href="#reviews">Reviews</a></li>
-   <% end %>
-   <% else %>
-   <li><a href="#profile" id="targeted" >Profile</a></li>
-   <li><%= link_to "Add Friend", friendships_path(:friend_id => @user.id), :method => :post %></li>
-
-   <li><a href="#reviews">Reviews</a></li>
-   <li><a href="#message">Chat</a></li>
-   <% end %>
- </ul>
-</div>
-<div class="main">
-  <div class="mainContent clearfix">
-   <div id="profile" class="logo-avatar">
-    <a href=""><img class="pic img-cricle" src="<%= @user.avatar %>" alt="profile_pic"></a>
-    <div class="monitor" style="width: 1000px; margin-top: 350px;height: initial; float:none;">
-      <h4>Bio</h4>
-      <p><%= @user.bio %></p>
-      <h4>Interests</h4>
-      <p><%= @user.interests %></p>
-      <h4>Birthday</h4>
-      <p><%= @user.birthdate %></p>
-      <h4>Location</h4>
-      <p><%= @user.address%>
-      <h4>Travel Tips</h4>
-      <p><%= @user.tips%>
-      <h4>Favourite Locations</h4>
-      <p><%= @user.faves%>
-      </p>
-    </div>
-  </div>
-  <div id="edit_profile">      
-   <ul class="content">
-    <div class='row'>
-      <% if @user.errors.any? %>
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-      </ul>
-      <% end %>
-    </div>
-    <div class="row">
-
-      <section>
-       <div class="wizard">
-        <div class="wizard-inner">
-         <div class="connecting-line"></div>
-         <ul class="nav nav-tabs" role="tablist">
-          <li role="presentation" class="active">
-           <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Profile">
-            <span class="round-tab">
-             <i class="glyphicon glyphicon-user" style="margin-right: 0px;"></i>
-           </span>
-         </a>
-       </li>
-       <li role="presentation" class="disabled">
-         <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Emergency Contact">
-          <span class="round-tab">
-           <i class="glyphicon glyphicon-phone-alt" style="margin-right: 0px;"></i>
-         </span>
-       </a>
-     </li>                  
-   </ul>
+<div class="container ">
+   <h1 class="text-center"><%= @user.first_name %> <%= @user.last_name %></h1>
+   <div class="nav-center" style="height: 30px;">
+      <ul class="nav-profile nav-pills">
+         <% if current_user == @user %>
+         <li><a href="#profile" id="targeted" >Profile</a></li>
+         <li><a href="#edit_profile">Edit Profile</a></li>
+         <li><a href="#friends">Friends</a></li>
+         <% unless %>
+         <li><a href="#reviews">Reviews</a></li>
+         <% end %>
+         <% else %>
+         <li><a href="#profile" id="targeted" >Profile</a></li>
+         <li><%= link_to "Add Friend", friendships_path(:friend_id => @user.id), :method => :post %></li>
+         <li><a href="#reviews">Reviews</a></li>
+         <li><%= link_to "Send Message", "#", "data-sid" => current_user.id, "data-rip" => @user.id %></li>
+         <% end %>
+     </ul>
  </div>
- <div class="container" id="edit-profile" >
-   <div class="row">
-    <div class="col-lg-12 col-lg-offset-6 center-block" style="width: 500px; position: relative; left: 325px;" > 
-     <%= form_for(@user) do |form| %>
-     <div class="tab-content">
-      <div class="tab-pane active" role="tabpanel" id="step1">
-       <h3 id="title">Profile</h3>
+ <div class="main">
+  <div class="mainContent clearfix">
+     <div id="profile" class="logo-avatar">
+        <a href=""><img class="pic img-cricle" src="<%=@user.avatar%>" alt="profile_pic"></a>
+        <div class="monitor" style="width: 1000px; margin-top: 350px;height: initial; float:none;">
+           <h4>Bio</h4>
+           <p><%= @user.bio %></p>
+           <h4>Interest</h4>
+           <p><%= @user.interests %></p>
+           <h4>Birthday</h4>
+           <p><%= @user.birthdate %></p>
+           <h4>Location</h4>
+           <p><%= @user.address%></p>
+       </div>
+   </div>
+   <div id="edit_profile">      
+      <ul class="content">
+         <div class='row'>
+            <% if @user.errors.any? %>
+            <ul>
+               <% @user.errors.full_messages.each do |message| %>
+               <li><%= message %></li>
+               <% end %>
+           </ul>
+           <% end %>
+       </div>
+       <div class="row">
+          <section>
+             <div class="wizard">
+                <div class="wizard-inner">
+                   <div class="connecting-line"></div>
+                   <ul class="nav nav-tabs" role="tablist">
+                      <li role="presentation" class="active">
+                         <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Profile">
+                            <span class="round-tab">
+                               <i class="glyphicon glyphicon-user" style="margin-right: 0px;"></i>
+                           </span>
+                       </a>
+                   </li>
+                   <li role="presentation" class="disabled">
+                       <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Emergency Contact">
+                          <span class="round-tab">
+                             <i class="glyphicon glyphicon-user" style="margin-right: 0px;"></i>
+                         </span>
+                     </a>
+                 </li>                  
+             </ul>
+         </div>
+         <div class="container" id="edit-profile" >
+           <div class="row">
+              <div class="col-lg-12 col-lg-offset-6 center-block" style="width: 500px; position: relative; left: 325px;" > 
+                 <%= form_for(@user) do |form| %>
+                 <div class="tab-content">
+                    <div class="tab-pane active" role="tabpanel" id="step1">
+                       <h3>Profile</h3>
 
-       <label class="col-xs-4 sr-only"></label>
-       <b>First Name: </b>
-       <%= form.text_field :first_name, class:"form-control", placeholder:"Enter your first name" %></br>
+                       <label class="col-xs-4 sr-only"></label>
+                       <b>First Name: </b>
+                       <%= form.text_field :first_name, class:"form-control", placeholder:"Enter your first name" %></br>
 
-       <label class="col-xs-4 sr-only">Last Name</label>
-       <b>Last Name: </b> 
-       <%= form.text_field :last_name ,class:"form-control", placeholder:"Enter your last name" %></br>
+                       <label class="col-xs-4 sr-only">Last Name</label>
+                       <b>Last Name: </b> 
+                       <%= form.text_field :last_name ,class:"form-control", placeholder:"Enter your last name" %></br>
 
-       <label class="col-xs-4 sr-only">Biography</label>
-       <b>Biography: </b> 
-       <%= form.text_area :bio ,class:"form-control", placeholder:"Tell us more about yourself" %></br>
+                       <label class="col-xs-4 sr-only">Biography</label>
+                       <b>Biography: </b> 
+                       <%= form.text_area :bio ,class:"form-control", placeholder:"Tell us more about yourself" %></br>
 
-       <label class="col-xs-4 sr-only">Interests</label>
-       <b>Interests: </b> 
-       <%= form.text_area :interests ,class:"form-control", placeholder:"What's your interest?" %></br>
+                       <label class="col-xs-4 sr-only">Interests</label>
+                       <b>Interests: </b> 
+                       <%= form.text_area :interests ,class:"form-control", placeholder:"What's your interest?" %></br>
 
-       <label class="col-xs-4 sr-only">Birthdate</label>
-       <b>Birthdate: </b> 
-       <%= form.date_field :birthdate ,class:"form-control", placeholder:"Birthday" %></br>
+                       <label class="col-xs-4 sr-only">Birthdate</label>
+                       <b>Birthdate: </b> 
+                       <%= form.date_field :birthdate ,class:"form-control", placeholder:"Birthday" %></br>
 
-       <label class="col-xs-4 sr-only">Location</label>
-       <b>Location: </b> 
-       <%= form.text_area :address ,class:"form-control", placeholder:"Where are you?" %></br>
+                       <label class="col-xs-4 sr-only">Location</label>
+                       <b>Location: </b> 
+                       <%= form.text_area :address ,class:"form-control", placeholder:"Where are you?" %></br>
 
-       <b>Email: </b> 
-       <label class="col-xs-4 sr-only"> Email</label>
-       <%= form.text_field :email, class:"form-control", placeholder:"Email"%></br>
+                       <b>Email: </b> 
+                       <label class="col-xs-4 sr-only"> Email</label>
+                       <%= form.text_field :email, class:"form-control", placeholder:"Email"%></br> 
 
-        <label class="col-xs-4 sr-only">Local Hacks</label>
-        <b>Local Hacks: </b> 
-        <%= form.text_area :tips, class:"form-control", placeholder:"Give us some Travel Tips about your current location"%></br>
+                      <label class="col-xs-4 sr-only">Local Hacks</label>
+                      <b>Local Hacks: </b> 
+                      <%= form.text_area :tips, class:"form-control", placeholder:"Give us some Travel Tips about your current location"%></br>
 
-        <label class="col-xs-4 sr-only"> Favourite Destinations</label>
-        <b>Favourite Destinations: </b> 
-        <%= form.text_area :faves, class:"form-control", placeholder:"Where are some of your favourite locations?"%></br>                
+                      <label class="col-xs-4 sr-only"> Favourite Destinations</label>
+                      <b>Favourite Destinations: </b> 
+                      <%= form.text_area :faves, class:"form-control", placeholder:"Where are some of your favourite locations?"%></br>           
 
-       <b>Profile Picture: </b>
-       <label class="sr-only" > Avatar</label>
-       <%= form.file_field :avatar %>
+                       <b>Profile Picture: </b>
+                       <label class="sr-only" > Avatar</label>
+                       <%= form.file_field :avatar %>
 
-       <ul class="list-inline pull-right" style="text-align: center;">
-        <li><button type="button" class="btn btn-primary next-step">Next</button></li>
-      </ul>
-    </div>
+                       <ul class="list-inline pull-right" style="text-align: center;">
+                          <li style="padding-right: 405px"><button type="button" class="btn btn-primary next-step">Next</button></li>
+                      </ul>
+                  </div>
 
-    <div class="tab-pane" role="tabpanel" id="step2">
-     <h3 id="title">Emergency Contact Information</h3>
-     <label class="sr-only">First Name</label>
-     <b>First Name: </b> 
-     <%= form.text_field :emer_first ,class:"form-control", placeholder:"First Name" %></br>
+                  <div class="tab-pane" role="tabpanel" id="step2">
+                     <h3>Emergency Contact Information</h3>
+                     <label class="sr-only">First Name</label>
+                     <b>First Name: </b> 
+                     <%= form.text_field :emer_first ,class:"form-control", placeholder:"First Name" %></br>
 
-     <label class="sr-only">Last Name</label>
-     <b>Last Name: </b> 
-     <%= form.text_field :emer_last ,class:"form-control", placeholder:"Last Name" %></br>
+                     <label class="sr-only">Last Name</label>
+                     <b>Last Name: </b> 
+                     <%= form.text_field :emer_last ,class:"form-control", placeholder:"Last Name" %></br>
 
-     <label class="sr-only">Address</label>
-     <b>Address: </b> 
-     <%= form.text_area :emer_address ,class:"form-control", placeholder:"Address" %></br>
+                     <label class="sr-only">Address</label>
+                     <b>Address: </b> 
+                     <%= form.text_area :emer_address ,class:"form-control", placeholder:"Address" %></br>
 
-     <label class="sr-only">Phone Number</label>
-     <b>Phone Number: </b> 
-     <%= form.telephone_field :emer_phone ,class:"form-control" %></br>
+                     <label class="sr-only">Phone Number</label>
+                     <b>Phone Number: </b> 
+                     <%= form.telephone_field :emer_phone ,class:"form-control" %></br>
 
-     <div class="dropdown">
-      <button class="btn btn-default dropdown-toggle sr-only" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-       <span class="caret"></span>
-     </button>
-     <b>Relation: </b>
-     <ul>
-       <li><%= form.select :emer_relation,
-        [['Parents','Parents'],['Spouse','Spouse'],
-        ['Sibling','Sibling'],['Children','Children'],
-        ['Friend','Friend'],['Others','Others']] ,class:"form-control" ,class:"dropdown-menu" ,'aria-labelledby':"dropdownMenu1"%>
-      </li>
-    </ul>
+                     <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle sr-only" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                           <span class="caret"></span>
+                       </button>
+                       <b>Relation: </b>
+                       <ul>
+                           <li><%= form.select :emer_relation,
+                              [['Parents','Parents'],['Spouse','Spouse'],
+                              ['Sibling','Sibling'],['Children','Children'],
+                              ['Friend','Friend'],['Others','Others']] ,class:"form-control" ,class:"dropdown-menu" ,'aria-labelledby':"dropdownMenu1"%>
+                          </li>
+                      </ul>
+                  </div>
+
+                  <ul class="list-inline pull-right">
+                      <li style="padding-right: 200px"><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                      <li style="padding-right: 200px"><%= form.submit "Save and Continue", class: "btn btn-primary btn-info-full next-step" %></button></li>
+                      <% end %>
+                  </ul>
+
+              </div>
+              <div class="clearfix"></div>
+          </div>
+      </div>
   </div>
-
-  <ul class="list-inline pull-right">
-    <li style="padding-right: 200px"><button type="button" class="btn btn-default prev-step">Previous</button></li>
-    <li style="padding-right: 200px"><%= form.submit "Save and Continue", class: "btn btn-primary btn-info-full next-step"%></button></li>
-    <% end %>
-  </ul>
-</div>
-<div class="clearfix"></div>
-</div>
-</div>
-</div>
 </div>
 </div>
 </section>
@@ -178,79 +171,165 @@
 </ul>
 
 <div id="friends">
-  <!-- put it here onwards -->
-  <div class="container Container1">
-    <div class="Content Wrapper">          
-      <div class="col-md-6">
-        <!--  -->
-        <% if current_user == @user %>
-        <h4>Friend Requests</h4>
-        <ul>
-          <% @user.requested_friendships.each do |request| %>
-          <li>
-           <%= request.first_name %> <%= request.last_name %> 
-           <%= link_to "Accept", friendship_path(request.id), :method => "put" %> 
-           <%= link_to "Decline", friendship_path(request.id), :method => :delete %>
-         </li>    
-         <% end %>
-       </ul>
-       <% end %>
-       <!--  -->
-       <h4 class="header">Friends</h4>
-       <% @user_friends.each do |f|%>
-       
-       <div class="contact-cards-index-page">
-        <div class="row">
-          <div class="col-xs-3" >
-            <%= image_tag f.avatar, class: "img-responsive" %>                    
-          </div>
-          <div class="col-xs-6" style='padding-left: 5px;' >
-            <h3 style='margin: 0px;' >
-              <%= link_to [f.first_name, f.last_name].join(" "), user_path(f.id) %>                                  
-            </h3>
-            <p>
-              <%= f.address %>
+    <!-- put it here onwards -->
+    <div class="container Container1">
+      <div class="Content Wrapper">
+            <div class="col-md-6">
+            <!--  -->
+              <% if current_user == @user %>
+                <h4>Friend Requests</h4>
+                <ul>
+                  <% @user.requested_friendships.each do |request| %>
+                  <% @user.friendships.each do |friendship| %>
+                    <% if !friendship.original %>
+                       <li>
+                       <%= request.first_name %> <%= request.last_name %> 
+                       <%= link_to "Accept", friendship_path(request.id), :method => "put" %> 
+                       <%= link_to "Decline", friendship_path(request.id), :method => :delete %>
+                       </li> 
+                    <% end %> 
+                   <% end %>   
+                  <% end %>
+                </ul>
+              <% end %>
+            <!--  -->
+            <h4 class="header">Friends</h4>
+              <% @user_friends.each do |f|%>
+             
+                   <div class="contact-cards-index-page">
+                    <div class="row">
+                        <div class="col-xs-3" >
+                              <%= image_tag f.avatar, class: "img-responsive" %>                    
+                        </div>
+                        <div class="col-xs-6" style='padding-left: 5px;' >
+                              <h3 style='margin: 0px;' >
+                                    <%= link_to [f.first_name, f.last_name].join(" "), user_path(f.id) %>                                  
+                              </h3>
+                              <p>
+                                <%= f.address %>
 
-              <%= f.interests %>
-            </p>                            
-          </div>
-          <div class="col-xs-3 removePadding" style='text-align: right;'>
+                                <%= f.interests %>
+                              </p>                            
+                        </div>
+                        <div class="col-xs-3 removePadding" style='text-align: right;'>
 
-            <% if current_user %>
+                          <% if current_user %>
 
-            <%= link_to "             View Profile           ", user_path(f.id), class: "btn btn-success btn-xs"  %>
-            <br>
+                            <%= link_to "             View Profile           ", user_path(f.id), class: "btn btn-success btn-xs"  %>
+                            <br>
 
-            <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => f.id %>
-            <br>
+                            <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => f.id %>
+                            <br>
 
-            <% unless @user != current_user %>
-            
-            <%= link_to "Unfriend", friendship_path(f.id), class: "btn btn-success btn-xs", :method => :delete %>
+                            <% unless @user != current_user %>
+                                 
+                            <%= link_to "Unfriend", friendship_path(f.id), class: "btn btn-success btn-xs", :method => :delete %>
 
-            <% end %>
+                            <% end %>
 
-            <%else%>
+                          <%else%>
 
-            <%= link_to " Login to View", "/", class: "btn btn-success btn-xs"  %>
-            <%end%>
-          </div>
-        </div>
+                              <%= link_to " Login to View", "/", class: "btn btn-success btn-xs"  %>
+                          <%end%>
+                        </div>
+                      </div>
+                  </div>
+              <%end%> 
+            </div>
+
+            <div class="col-md-6 right" >
+              <!-- Your second column here -->
+
+
+              <div style='width: 100%; height: 100%; '>
+                <div id="map" style='width: 100%; height: 800px;'></div>
+              </div>
+            </div>
       </div>
-      <%end%> 
     </div>
 
-    <div class="col-md-6 right" >
-      <!-- Your second column here -->
 
-
-      <div style='width: 100%; height: 100%; '>
-        <div id="map" style='width: 100%; height: 800px;'></div>
-      </div>
-    </div>
-  </div>
+     
+   <!-- stop here -->
 </div>
 
+<div id="reviews">
+   <h2 class="header">Reviews</h2>
+   <%= render partial: 'reviews/form', locals: { user: @user } %>
+   <% if current_user.id != @user.id%>
+
+
+   <%end%> 
+
+   <table>
+      <thead>
+         <tr>
+            <th>Comment</th>
+            <th>Star</th>
+            <th>User</th>
+            <th colspan="3"></th>
+        </tr>
+    </thead>
+
+    <% @reviews.each do |review| %>
+    <tr>
+       <td><%= review.comment %></td>
+       <td class="stars" id="<%= review.id %>"></td>
+     <td><%= review.user.first_name %></td>
+     <td><%= link_to 'Edit', edit_user_review_path(@user, review.id) %></td>
+     <td><%= link_to 'Destroy', user_review_path(@user.id, review.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+ </tr>
+ <script>
+    $("#<%= review.id %>.stars").raty({
+       path: '/assets',
+       readOnly: true,
+       score: <%= review.star %>
+   });
+</script>
+ <% end %>
+</div>
+</div>
+</div>
+
+
+
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    $('.map').hide()
+  });
+  $(document).on('page:change', function () {
+      //Initialize tooltips
+      $('.nav-tabs > li a[title]').tooltip();
+      
+      //Wizard
+      $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+
+         var $target = $(e.target);
+
+         if ($target.parent().hasClass('disabled')) {
+            return false;
+        }
+    });
+
+      $(".next-step").click(function (e) {
+         var $active = $('.wizard .nav-tabs li.active');
+         $active.next().removeClass('disabled');
+         nextTab($active);
+         $('.map').show();
+
+     });
+      $(".prev-step").click(function (e) {
+
+         var $active = $('.wizard .nav-tabs li.active');
+         prevTab($active);
+         $('.map').hide();
+
+     });
+  });
+
+</script>
 
 <script type="text/javascript">
   handler = Gmaps.build('Google');
@@ -260,81 +339,3 @@
     handler.fitMapToBounds();
   });
 </script>
-
-<!-- stop here -->
-</div>
-
-<div id="reviews">
- <h2 class="header">Reviews</h2>
- <%= render partial: 'reviews/form', locals: { user: @user } %>
- <% if current_user.id != @user.id%>
-
-
- <%end%> 
-
- <table>
-  <thead>
-   <tr>
-    <th>Comment</th>
-    <th>Star</th>
-    <th>User</th>
-    <th colspan="3"></th>
-  </tr>
-</thead>
-
-<% @reviews.each do |review| %>
-<tr>
- <td><%= review.comment %></td>
- <td class="stars" id="<%= review.id %>"></td>
- <script>
-  $("#<%= review.id %>.stars").raty({
-   path: '/assets',
-   readOnly: true,
-   score: <%= review.star %>
- });
-</script>
-<td><%= review.user.first_name %></td>
-<td><%= link_to 'Edit', edit_user_review_path(@user, review.id) %></td>
-<td><%= link_to 'Destroy', user_review_path(@user.id, review.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-</tr>
-<% end %>
-</div>
-<div id="message">
-  <h2 class="header">MESSAGE - THROW THIS AWAY AFTER THIS</h2>
-</div>
-</div>
-</div>
-
-
-<script type="text/javascript">
-
-  $(document).on('page:change', function () {
-      //Initialize tooltips
-      $('.nav-tabs > li a[title]').tooltip();
-      
-      //Wizard
-      $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
-
-       var $target = $(e.target);
-
-       if ($target.parent().hasClass('disabled')) {
-        return false;
-      }
-    });
-
-      $(".next-step").click(function (e) {
-       var $active = $('.wizard .nav-tabs li.active');
-       $active.next().removeClass('disabled');
-       nextTab($active);
-
-     });
-      $(".prev-step").click(function (e) {
-
-       var $active = $('.wizard .nav-tabs li.active');
-       prevTab($active);
-
-     });
-    });
-
-  </script>
-  </body>
