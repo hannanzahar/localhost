@@ -79,7 +79,7 @@
      <%= form_for(@user) do |form| %>
      <div class="tab-content">
       <div class="tab-pane active" role="tabpanel" id="step1">
-       <h3>Profile</h3>
+       <h3 id="title">Profile</h3>
 
        <label class="col-xs-4 sr-only"></label>
        <b>First Name: </b>
@@ -127,7 +127,7 @@
     </div>
 
     <div class="tab-pane" role="tabpanel" id="step2">
-     <h3>Emergency Contact Information</h3>
+     <h3 id="title">Emergency Contact Information</h3>
      <label class="sr-only">First Name</label>
      <b>First Name: </b> 
      <%= form.text_field :emer_first ,class:"form-control", placeholder:"First Name" %></br>
@@ -160,7 +160,7 @@
 
   <ul class="list-inline pull-right">
     <li style="padding-right: 200px"><button type="button" class="btn btn-default prev-step">Previous</button></li>
-    <li style="padding-right: 200px"><%= form.submit "Save and Continue", class: "btn btn-primary btn-info-full next-step" %></button></li>
+    <li style="padding-right: 200px"><%= form.submit "Save and Continue", class: "btn btn-primary btn-info-full next-step"%></button></li>
     <% end %>
   </ul>
 </div>

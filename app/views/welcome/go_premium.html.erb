@@ -1,5 +1,5 @@
 <center>
-	<h1 id="title" style="padding-bottom: 50px">Go Premium!</h1>
+	<h1 id="title" style="padding-bottom: 20px">Go Premium!</h1>
 	<h3>Create your own Travel Blog to document your adventures</h3>
 	<h4>Share this with your friends and followers</h4>
 	<div class="container">
@@ -56,11 +56,11 @@
 	</div>
 
  <!-- BLOG POST 1-->
-<div class="row" style="margin-left: 30%">
+<div class="row" style="margin-left: 27%">
   <div class="span8">
     <div class="row">
       <div class="span8">
-        <h4><strong><a href="#">Amidst the hustle & bustle of Hong Kong</a></strong></h4>
+        <h3 id="title"><strong><a href="#">Amidst the hustle & bustle of Hong Kong</a></strong></h4>
       </div>
     </div>
     <div class="row">
@@ -73,7 +73,7 @@
         <p style="text-align: justify;">
           So we decided to go to Hong Kong on a last-minute whim; without an itinerary or planning prior to our arrival, we were concerned that we wouldn't bet able to make the most of our trip. Luckily, we connected with <a href="#"><b>@Lam Sheng Xiong</b></a> and <a href="#"><b>@Jian Hew</b></a> on Local Host and they showed us around the city. Hong Kong is a vibrant city with a certain charm. Every corner you turn reminds you of a still from a Wong Kar Wai movie. AND THE FOOD!
         </p>
-        <p><a class="btn" href="#">Read more</a></p>
+<!--         <p><a class="btn" href="#">Read more</a></p> -->
       </div>
     </div>
     <div class="row">
@@ -95,11 +95,11 @@
 </div>
 <hr>
  <!-- BLOG POST 2-->
-<div class="row" style="margin-left: 30%">
+<div class="row" style="margin-left: 27%">
   <div class="span8">
     <div class="row">
       <div class="span8">
-        <h4><strong><a href="#">Sakura in Japan</a></strong></h4>
+        <h3 id="title"><strong><a href="#">Sakura in Japan</a></strong></h4>
       </div>
     </div>
     <div class="row">
@@ -133,11 +133,11 @@
 </div>
 <hr>
  <!-- BLOG POST 3-->
-<div class="row" style="margin-left: 30%">
+<div class="row" style="margin-left: 27%">
   <div class="span8">
     <div class="row">
       <div class="span8">
-        <h4><strong><a href="#">Amazing Rio</a></strong></h4>
+        <h3 id="title"><strong><a href="#">Amazing Rio</a></strong></h4>
       </div>
     </div>
     <div class="row">
@@ -148,9 +148,9 @@
       </div>
       <div class="span6">      
         <p>
-          A trip to Rio would not be complete unless you see the statue of Christ The Redeemer in all its glory! Rio is generally a party city and one that you really can’t miss if you love having a good time. Most people spend their days on the beach and their nights dancing at the clubs, needless to say I was also there.
+          A trip to Rio would not be complete unless you see the statue of Christ The Redeemer in all its glory! Rio is generally a party city and one that you really can’t miss if you love having a good time. Most people spend their days on the beach and their nights dancing at nightclubs - obviously, I had to check it out!
         </p>
-        <p><a href="#">Read more</a></p>
+<!--         <p><a href="#">Read more</a></p> -->
       </div>
     </div>
     <div class="row">
@@ -159,7 +159,7 @@
         <p>
           <i class="icon-user"></i> by <a href="#">Sam Tingle</a> 
           | <i class="icon-calendar"></i> August 26th, 2014
-          | <i class="icon-comment"></i> <a href="#">1 Comment</a>
+          | <i class="icon-comment"></i> <a href="#">0 Comment</a>
           | <i class="icon-share"></i> <a href="#">3 Shares</a>
           <i class="icon-tags"></i><br> Tags : <a href="#"><span class="label label-info">Rio De Janeiro</span></a> 
           <a href="#"><span class="label label-info">Brazil</span></a> 
@@ -191,14 +191,14 @@
 						<ul class="media-list">
 							<li class="media">
 								<div class="media-left">
-									<img src="http://placehold.it/60x60" class="img-circle">
+									<%= image_tag("keiko.jpg", size: '60x60', class: "img-circle") %>
 								</div>
 								<div class="media-body">
 									<h4 class="media-heading">
 										Keiko Nakamura
 										<br>
 										<small>
-											commented on <a href="#">Sakura In Japan</a>
+											commented<a href="#">Sakura In Japan</a>
 										</small>
 									</h4>
 									<p>
@@ -208,35 +208,35 @@
 							</li>
 							<li class="media">
 								<div class="media-left">
-									<img src="http://placehold.it/60x60" class="img-circle">
+									<%= image_tag("lam.png", size: '60x60', class: "img-circle") %>
 								</div>
 								<div class="media-body">
 									<h4 class="media-heading">
-										Aenean Consect
+										Lam Sheng Xiong
 										<br>
 										<small>
-											commented on <a href="#">Post Title</a>
+											commented<a href="#">Amidst the hustle & bustle of Hong Kong</a>
 										</small>
 									</h4>
 									<p>
-										Curabitur vel malesuada tortor, sit amet ultricies mauris. Aenean consectetur ultricies luctus.
+										Nice to meet you Sam! Hope you enjoyed the Dim Sum!
 									</p>
 								</div>
 							</li>
 							<li class="media">
 								<div class="media-left">
-									<img src="http://placehold.it/60x60" class="img-circle">
+									<%= image_tag("jian.png", size: '60x60', class: "img-circle") %>
 								</div>
 								<div class="media-body">
 									<h4 class="media-heading">
-										Praesent Tinci
+										Jian Hew
 										<br>
 										<small>
-											commented on <a href="#">Post Title</a>
+											commented<a href="#">Amidst the hustle & bustle of Hong Kong</a>
 										</small>
 									</h4>
 									<p>
-										Sed convallis dignissim magna et dignissim. Praesent tincidunt sapien eu gravida dignissim.
+										Hope you enjoyed HK! Next time you should show us around Australia!
 									</p>
 								</div>
 							</li>

@@ -107,6 +107,14 @@ h2#title {
 	font-family: 'Lobster', cursive;
 }
 
+h3#title {
+    font-family: 'Lobster', cursive;
+}
+
+h4#title {
+    font-family: 'Lobster', cursive;
+}
+
 a#nav-btn {
 	margin-top: 10px;
 /*	font-weight: 300;*/
