@@ -30,8 +30,11 @@ Rails.application.routes.draw do
 #OMNIAUTH
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
-
   get "welcome/index"
+
+  get "welcome/go_premium"
+
+
   # authenticated do
   #  root 'welcome#dashboard', as: :authenticated_root
   # end

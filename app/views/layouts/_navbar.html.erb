@@ -30,6 +30,7 @@
         <li class="menuItem"><a href="/users/<%= current_user.id %>#profile" id="nav-btn" style="font-family: 'Lobster', cursive"><%= current_user.email %></a></li>
         <% else %>
         <% end %>
+        <li class="menuItem"><a href="/welcome/go_premium" id="nav-btn" style="font-family: 'Lobster', cursive">Go Premium</a></li>
         <% if signed_in? %>
           <li class="menuItem" style="margin-top: 10px; font-family: 'Lobster', cursive" id="nav-btn"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <% else %> 

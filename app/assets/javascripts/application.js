@@ -38,3 +38,10 @@ function prevTab(elem) {
     $(elem).prev().find('a[data-toggle="tab"]').click();
 }
 
+
+$(document).ready(function() {
+    $('#myCarousel').carousel({
+	    interval: 10000
+	})
+});
+
