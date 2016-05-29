@@ -25,7 +25,7 @@
             <% end %>
           </div>
         </li>
-        <li class="menuItem"><a href="/users" id="nav-btn" style="font-family: 'Lobster', cursive">Users Nearby</a></li>
+        <li class="menuItem"><a href="/users" id="nav-btn" style="font-family: 'Lobster', cursive">All Members</a></li>
         <% if current_user %>
         <li class="menuItem"><a href="/users/<%= current_user.id %>#profile" id="nav-btn" style="font-family: 'Lobster', cursive"><%= current_user.email %></a></li>
         <% else %>

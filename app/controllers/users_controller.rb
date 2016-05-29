@@ -43,8 +43,8 @@ class UsersController < ApplicationController
     @user_friends = []
     @user.friendships.where(approved: true).each do |friendship|
       
-      # friend = User.find(friendship.friend_id)
-      # @user_friends << friend
+      friend = User.find(friendship.friend_id)
+      @user_friends << friend
     end
     #user_friends is an array of all the approved friends
 
