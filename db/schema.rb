@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 20160528092810) do
     t.string   "street"
     t.string   "city"
     t.string   "state"
-    t.string   "coutry"
+    t.string   "country"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

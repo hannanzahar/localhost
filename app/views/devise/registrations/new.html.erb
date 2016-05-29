@@ -8,34 +8,35 @@
       <div class="social-box"> 
         <a href="/auth/facebook" class="btn btn-primary btn-block">
           Sign Up with Facebook
-        </a>     
+        </a>
+      </div>     
 
-        <div class="main">  
-          <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "First"%>
-          <%= f.text_field :last_name, class: "form-control", placeholder: "Last"%>
-          <%= f.email_field :email, class: "form-control", placeholder: "Email"%>
-          
-          <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder:"Passwords (6 characters minimum)" %>
+      <div class="main">  
+        <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "First"%>
+        <%= f.text_field :last_name, class: "form-control", placeholder: "Last"%>
+        <%= f.email_field :email, class: "form-control", placeholder: "Email"%>
 
-          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder:"Comfirm Your Password" %>
+        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder:"Passwords (6 characters minimum)" %>
+
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder:"Comfirm Your Password" %>
 
 
-          <%= f.submit "Sign up", class:"btn btn-large btn-info pull-right" %>
+        <%= f.submit "Sign up", class:"btn btn-large btn-info pull-right" %>
 
-          <span class="clearfix"></span>  
-        </div>
-
+        <span class="clearfix"></span>  
       </div>
 
-      <div class="login-footer">
+   
 
-        <div class="left-section">
-          <%= render "devise/shared/links" %>
-        </div>
-        
+    <div class="login-footer">
+
+      <div class="left-section">
+        <%= render "devise/shared/links" %>
       </div>
-      <% end %> 
+
     </div>
+    <% end %> 
   </div>
+</div>
 </div>
 
