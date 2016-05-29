@@ -170,7 +170,6 @@
             <div class="col-md-6">
             <!--  -->
               <% if current_user == @user %>
-              <!-- PEOPLE that request to be your friend -->
                 <h4>Friend Requests</h4>
                 <ul>
                   <% @user.requested_friendships.each do |request| %>
@@ -178,17 +177,6 @@
                    <%= request.first_name %> <%= request.last_name %> 
                    <%= link_to "Accept", friendship_path(request.id), :method => "put" %> 
                    <%= link_to "Decline", friendship_path(request.id), :method => :delete %>
-                  </li>    
-                  <% end %>
-                </ul>
-              <!--   People that you requested to be their friend -->
-                 <h4>Pending Friend You've Requested</h4>
-                <ul>
-                  <% @requested_friends.each do |requested| %>
-                  <li>
-                  <%if !@user_friends.include? requested %>
-                    <%= requested.first_name %> <%= requested.last_name %> 
-                  <%end%>
                   </li>    
                   <% end %>
                 </ul>

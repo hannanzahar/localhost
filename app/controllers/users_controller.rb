@@ -47,17 +47,17 @@ class UsersController < ApplicationController
       @user_friends << friend
     end
     #user_friends is an array of all the approved friends
-    
+
     @user_friends = @user_friends.uniq
 
-    @requested_friends =[]
-    @user.friendships.where(approved: false).each do |friendship|
+    # @requested_friends =[]
+    # @user.friendships.where(approved: false).each do |friendship|
       
-      friend = User.find(friendship.friend_id)
-      @requested_friends << friend
-    end
-    #requested friends is the friends that the current user has requested but they have not accepted
-    @requested_friends = @requested_friends.uniq
+    #   friend = User.find(friendship.friend_id)
+    #   @requested_friends << friend
+    # end
+    # #requested friends is the friends that the current user has requested but they have not accepted
+    # @requested_friends = @requested_friends.uniq
   
     @reviews = @user.reviews
     @review = Review.new
