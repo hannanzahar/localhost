@@ -26,7 +26,7 @@ class UsersController < ApplicationController
         marker.lng user.longitude
         marker.infowindow [user.first_name, user.last_name].join(" ")
       end
-      @header = "Our Members"
+      @header = "Members"
     end
 
     if current_user
