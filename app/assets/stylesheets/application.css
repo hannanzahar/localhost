@@ -103,6 +103,7 @@ a#nav-btn {
 .social-box{
   margin: 0 auto;
   padding: 38px;
+  height: 100%;
   border-bottom:1px #ccc solid;
 }
 .social-box a{
@@ -473,8 +474,8 @@ span.round-tab:hover {
 /*main*/
 .main {
     float: left;
-    width: 79%;
-    height: 690px;
+    width: 100%;
+    height: 95%;
     background-color: rgb(255,255,255);
     position: relative;
     font-family: helvetica,verdana,sans-serif;
@@ -813,4 +814,9 @@ textarea.form-control {
                   color:orange;
             }
       }
+}
+
+.nav-profile {
+    margin-left: 37%;
+    list-style: none;
 }

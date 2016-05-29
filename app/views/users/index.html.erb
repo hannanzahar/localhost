@@ -5,7 +5,7 @@
 
  <div class="Container1">
       <div class="find-users" style="text-align: center">
-      <h1> Hosts Nearby </h1>
+      <h1> Hosts Nearby </h1><br>
       </div>
       <div class="Content">
         <div class="Wrapper">
@@ -36,7 +36,8 @@
                           <% if current_user %>
                             <%= link_to "             View Profile           ", user_path(user.id), class: "btn btn-success btn-xs"  %>
                             <br>
-                             <%= link_to "Add Friend", create_friendship_path(user.id), method: :post,  class: "btn btn-success btn-xs"  %>
+                             <%= link_to "Add Friend", friendships_path(:friend_id => user.id), :method => :post, class: "btn btn-success btn-xs"  %>
+
                             <br>
 
                              <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %> 
