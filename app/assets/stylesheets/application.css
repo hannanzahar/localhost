@@ -12,8 +12,6 @@
  *
  /*
 
-
-
 	*= require animate
 	*= require bootstrap
 	*= require bootstrap.min
@@ -31,6 +29,40 @@
 	*= require welcome
 	*= require_self
 	*= require_tree .
+
+
+/*Carousel*/
+/* Removes the default 20px margin and creates some padding space for the indicators and controls */
+.carousel {
+    margin-bottom: 0;
+    padding: 0 40px 30px 40px;
+}
+/* Reposition the controls slightly */
+.carousel-control {
+    left: -12px;
+}
+.carousel-control.right {
+    right: -12px;
+}
+/* Changes the position of the indicators */
+.carousel-indicators {
+    right: 50%;
+    top: auto;
+    bottom: 0px;
+    margin-right: -19px;
+}
+/* Changes the colour of the indicators */
+.carousel-indicators li {
+    background: #c0c0c0;
+}
+.carousel-indicators .active {
+background: #333333;
+}
+
+.nav-profile {
+    margin-left: 37%;
+    list-style: none;
+}
 
 /* ----- Avatar -----*/
 .avatar {
@@ -51,7 +83,7 @@
 }
 
 div.intro-header {
-	background-image: url(group-beach.jpg);
+	background-image: url(diving.jpg);
 	opacity: 0.8;
 	z-index: -1;
 }
@@ -73,6 +105,14 @@ h1#title {
 
 h2#title {
 	font-family: 'Lobster', cursive;
+}
+
+h3#title {
+    font-family: 'Lobster', cursive;
+}
+
+h4#title {
+    font-family: 'Lobster', cursive;
 }
 
 a#nav-btn {
@@ -193,7 +233,9 @@ input#search.search-nav {
     height: 30px;
     margin-top: 40px;
     margin: 0px;
-    border-right: #18bc9c;
+    right: 150px;
+    position: relative;
+ /*   border-right: #18bc9c;*/
 /*    border-radius: 30px;*/
     text-align: center;
 }

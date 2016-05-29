@@ -6,12 +6,18 @@ Rails.application.routes.draw do
   devise_for :users
   # devise_for :models
   authenticated :user do
-    root 'users#index'
+    root 'welcome#index'
   end
 
-  unauthenticated :user do
+  # unauthenticated :user do
+  #   devise_scope :user do
+  #     get "/" => "devise/sessions#new"
+  #   end
+  # end
+
+    unauthenticated :user do
     devise_scope :user do
-      get "/" => "devise/sessions#new"
+      get "/" => "welcome#index"
     end
   end
 
@@ -30,8 +36,11 @@ Rails.application.routes.draw do
 #OMNIAUTH
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
-
   get "welcome/index"
+
+  get "welcome/go_premium"
+
+
   # authenticated do
   #  root 'welcome#dashboard', as: :authenticated_root
   # end
