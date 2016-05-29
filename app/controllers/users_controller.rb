@@ -12,7 +12,7 @@ class UsersController < ApplicationController
         marker.lng user.longitude
         marker.infowindow user.first_name
       end
-      @header = "Members Nearby"
+      @header = "Locals Nearby"
     else
       @user = User.all
       if current_user
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
         marker.lng user.longitude
         marker.infowindow [user.first_name, user.last_name].join(" ")
       end
-      @header = "Our Members"
+      @header = "Connect with Locals"
     end
     if current_user
       @conversations = Conversation.involving(current_user).order("created_at DESC")
