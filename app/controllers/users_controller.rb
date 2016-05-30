@@ -79,7 +79,7 @@ class UsersController < ApplicationController
     @user = current_user
     @user.geocode
     if @user.update_attributes(user_from_params)
-      redirect_to @user
+      redirect_to "/users/#{@user.id}#profile"
     else
       render 'edit'
     end
