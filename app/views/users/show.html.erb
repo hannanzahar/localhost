@@ -31,8 +31,8 @@
            <p><%= @user.birthdate %></p>
            <h4>Location</h4>
            <p><%= @user.address%></p>
-       </div>
-   </div>
+        </div>
+     </div>
    <div id="edit_profile">      
       <ul class="content">
          <div class='row'>
@@ -68,7 +68,7 @@
          </div>
          <div class="container" id="edit-profile" >
            <div class="row">
-              <div class="col-lg-12 col-lg-offset-6 center-block" style="width: 500px; position: relative; left: 325px;" > 
+              <div class="col-lg-12 col-lg-offset-6 center-block" style="width: 500px; position: relative; left: 325px;" >
                  <%= form_for(@user) do |form| %>
                  <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel" id="step1">
@@ -145,7 +145,7 @@
 
                   <ul class="list-inline pull-right">
                       <li style="padding-right: 200px"><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                      <li style="padding-right: 200px"><%= form.submit "Save and Continue", class: "btn btn-primary btn-info-full next-step" %></button></li>
+                      <li style="padding-right: 200px"><%= form.submit "Save and Continue", class: "btn btn-primary btn-info-full next-step submit_profile" %></button></li>
                       <% end %>
                   </ul>
 
@@ -243,11 +243,10 @@
 </div>
 
 <div id="reviews">
-   <h2 class="header">Reviews</h2>
-   <%= render partial: 'reviews/form', locals: { user: @user } %>
+   <h4 class="header">Reviews</h4>
+   
    <% if current_user.id != @user.id%>
-
-
+   <%= render partial: 'reviews/form', locals: { user: @user } %>
    <%end%> 
 
    <table>
@@ -260,22 +259,22 @@
         </tr>
     </thead>
 
-    <% @reviews.each do |review| %>
-    <tr>
-       <td><%= review.comment %></td>
-       <td class="stars" id="<%= review.id %>"></td>
-     <td><%= review.user.first_name %></td>
-     <td><%= link_to 'Edit', edit_user_review_path(@user, review.id) %></td>
-     <td><%= link_to 'Destroy', user_review_path(@user.id, review.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
- </tr>
- <script>
-    $("#<%= review.id %>.stars").raty({
-       path: '/assets',
-       readOnly: true,
-       score: <%= review.star %>
-   });
-</script>
- <% end %>
+      <% @reviews.each do |review| %>
+      <tr>
+         <td><%= review.comment %></td>
+         <td class="stars" id="<%= review.id %>"></td>
+       <td><%= review.user.first_name %></td>
+       <td><%= link_to 'Edit', edit_user_review_path(@user, review.id) %></td>
+       <td><%= link_to 'Destroy', user_review_path(@user.id, review.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <script>
+          $("#<%= review.id %>.stars").raty({
+             path: '/assets',
+             readOnly: true,
+             score: <%= review.star %>
+         });
+      </script>
+      <% end %>
 </div>
 </div>
 </div>
@@ -318,13 +317,25 @@
      });
   });
 
+    // $("#submit_profile").on('click', function(e) {
+    //   e.preventDefault();
+    //   $('.profile').show();
+
+    //   $.ajax({
+    //     method: 'GET', 
+    //     url: 'users/' + <%= current_user.id %> + '#profile'
+    //   })
+    // })
+
 </script>
 
 <script type="text/javascript">
+
   handler = Gmaps.build('Google');
   handler.buildMap({ provider: {}, internal: {id: "map"}}, function(){
     markers = handler.addMarkers(<%=raw @hash.to_json %>);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
   });
+
 </script>
