@@ -229,7 +229,7 @@ input.search-btn {
 
 /* Seach Bar Nav Bar */
 input#search.search-nav {
-	width: 300px;
+	width: 180%;
     height: 30px;
     margin-top: 40px;
     margin: 0px;
