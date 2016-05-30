@@ -25,7 +25,6 @@ class FriendshipsController < ApplicationController
     @user_being_friended = User.find(params[:friend_id])
     @friendship2 = @user_being_friended.friendships.build(:friend_id => current_user.id, approved: "false")
     @friendship2.original = false
-    byebug
     if !(Friendship.where(friend_id: params[:friend_id], user_id: current_user.id).count >= 1)
       if @friendship1.save && @friendship2.save
         flash[:notice] = "Friend requested."

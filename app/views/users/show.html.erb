@@ -176,7 +176,7 @@
       <div class="Content Wrapper">
             <div class="col-md-6">
             <!--  -->
-              <% if current_user == @user %>
+              <% if current_user == @user && @user.requested_friendships.count != 0 %>
                 <h4>Friend Requests</h4>
                 <ul>
                   <% @user.requested_friendships.each do |request| %>
