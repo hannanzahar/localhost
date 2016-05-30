@@ -40,6 +40,8 @@ Rails.application.routes.draw do
 
   get "welcome/go_premium"
 
+  get "welcome/blog"
+
 
   # authenticated do
   #  root 'welcome#dashboard', as: :authenticated_root
