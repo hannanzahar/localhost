@@ -39,7 +39,7 @@
                             <br>
                              <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %> 
                           <%else%>
-                              <%= link_to " Login to View", "/", class: "btn btn-success btn-xs"  %>
+                              <%= link_to " Login to View", "/users/sign_in", class: "btn btn-success btn-xs"  %>
                           <%end%>
                         </div>
                       </div>

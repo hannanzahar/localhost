@@ -20,16 +20,16 @@
 //= require gmaps/google
 //= require_self
 //= require_tree
-//= require stickUp.min.js
-//= require owl.carousel.js
-//= require PIE_IE678.js
-//= require PIE_IE9.js
-//= require users.js
-//= require classie.js
-//= require wow.min.js
-//= require bootstrap.js
-//= require script.js
-//= require uiMorphingButton_inflow.js
+//= require stickUp.min
+//= require owl.carousel
+//= require PIE_IE678
+//= require PIE_IE9
+//= require users
+//= require classie
+//= require wow.min
+//= require bootstrap
+//= require script
+//= require uiMorphingButton_inflow
 
 function nextTab(elem) {
     $(elem).next().find('a[data-toggle="tab"]').click();
