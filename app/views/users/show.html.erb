@@ -95,7 +95,7 @@
 
                        <label class="col-xs-4 sr-only">Location</label>
                        <b>Current Location: </b> 
-                       <%= form.text_area :address ,class:"form-control", placeholder:"Which city are you exploring right now?" %></br>
+                       <%= form.text_area :address ,class:"form-control", placeholder:"Where are you right now?" %></br>
 
                        <b>Email: </b> 
                        <label class="col-xs-4 sr-only"> Email</label>
@@ -254,11 +254,10 @@
 </div>
 
 <div id="reviews">
-   <h2 class="header">Reviews</h2>
-   <%= render partial: 'reviews/form', locals: { user: @user } %>
+   <h4 class="header">Reviews</h4>
+   
    <% if current_user.id != @user.id%>
-
-
+   <%= render partial: 'reviews/form', locals: { user: @user } %>
    <%end%> 
 
    <table>
@@ -270,23 +269,23 @@
             <th colspan="3"></th>
         </tr>
     </thead>
-
-    <% @reviews.each do |review| %>
-    <tr>
-       <td><%= review.comment %></td>
-       <td class="stars" id="<%= review.id %>"></td>
-     <td><%= review.user.first_name %></td>
-     <td><%= link_to 'Edit', edit_user_review_path(@user, review.id) %></td>
-     <td><%= link_to 'Destroy', user_review_path(@user.id, review.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
- </tr>
- <script>
-    $("#<%= review.id %>.stars").raty({
-       path: '/assets',
-       readOnly: true,
-       score: <%= review.star %>
-   });
-</script>
- <% end %>
+    
+        <% @reviews.each do |review| %>
+        <tr>
+           <td><%= review.comment %></td>
+           <td class="stars" id="<%= review.id %>"></td>
+         <td><%= review.user.first_name %></td>
+         <td><%= link_to 'Edit', edit_user_review_path(@user, review.id) %></td>
+         <td><%= link_to 'Destroy', user_review_path(@user.id, review.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <script>
+            $("#<%= review.id %>.stars").raty({
+               path: '/assets',
+               readOnly: true,
+               score: <%= review.star %>
+           });
+        </script>
+        <% end %>
 </div>
 </div>
 </div>
