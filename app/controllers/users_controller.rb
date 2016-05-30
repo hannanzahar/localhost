@@ -61,8 +61,9 @@ class UsersController < ApplicationController
   
     @reviews = @user.reviews
     @review = Review.new
-    @conversations = Conversation.involving(current_user).order("created_at DESC")
-  
+    if current_user
+      @conversations = Conversation.involving(current_user).order("created_at DESC")
+    end  
 
     @hash = Gmaps4rails.build_markers(@user_friends) do |user, marker|
         marker.lat user.latitude
